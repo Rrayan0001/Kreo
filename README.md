@@ -1,0 +1,1 @@
+kreosoftwares all rights reserved
