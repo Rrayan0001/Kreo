@@ -1,0 +1,16 @@
+{
+  "name": "Kreosoftwares",
+  "short_name": "Kreosoft",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "description": "Software Development Company in Hubli–Dharwad, Karnataka",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

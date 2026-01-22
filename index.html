@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kreo Softwares</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" referrerpolicy="no-referrer">
+
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#264773",
+                        "background-light": "#f7f7f7",
+                        "background-dark": "#1a1a1a",
+                        "platinum": "#BFBFBF",
+                        "charcoal": "#333333",
+                        "blueprint-grid": "#e5e7eb",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                    backgroundImage: {
+                        'grid-pattern': "linear-gradient(to right, #e5e7eb 1px, transparent 1px), linear-gradient(to bottom, #e5e7eb 1px, transparent 1px)",
+                        'grid-pattern-dark': "linear-gradient(to right, #333 1px, transparent 1px), linear-gradient(to bottom, #333 1px, transparent 1px)",
+                    }
+                },
+            },
+        }
+    </script>
+
+<style>
+       
+        /* Subtle technical graphic in cards */
+        .tech-bg-pattern {
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 10px 10px;
+            opacity: 0.3;
+        }
+        .dark .tech-bg-pattern {
+            background-image: radial-gradient(#4b5563 1px, transparent 1px);
+        }
+        
+        /* Fade up animation utilities */
+        .fade-in-up {
+            animation: fadeInUp 0.1s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* Logo sizing - header and footer */
+        .sam {
+            width: 320px;
+            height: auto;
+            display: block;
+        }
+
+        .footer-logo {
+            width: 140px;
+            height: auto;
+            display: block;
+        }
+
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* MSME top-right banner */
+        .msme-banner {
+            position: fixed;
+            top: 7rem;
+            right: 1rem;
+            z-index: 9999; /* above header (z-50) */
+            width: 180px; /* rectangular dimensions */
+            height: 92px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+            background: rgba(255,255,255,0.95);
+            border: 1px solid rgba(37,99,235,0.08);
+            border-radius: 8px;
+            box-shadow: 0 6px 18px rgba(16,24,40,0.12);
+            backdrop-filter: blur(4px);
+        }
+
+        .msme-banner img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain; /* keep logo inside the rectangle */
+            display: block;
+        }
+
+        @media (max-width: 640px) {
+            .msme-banner { width: 140px; height: 72px; top: 0.5rem; right: 0.5rem; }
+        }
+        @media (max-width: 420px) {
+            /* Hide banner on very small devices to avoid overlap */
+            .msme-banner { display: none; }
+        }
+        /* Tech stack marquee ticker */
+        .ticker {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .ticker-track {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            /* ensure the track is sized to its content (two groups will be placed inside) */
+            white-space: nowrap;
+            will-change: transform;
+            animation: marquee 20s linear infinite;
+        }
+
+        .ticker-group { display: flex; gap: 2rem; align-items: center; }
+
+        .ticker-track > * { flex-shrink: 0; }
+
+        .ticker:hover .ticker-track { animation-play-state: paused; }
+
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        @media (max-width: 640px) {
+            .ticker-track { gap: 1rem; animation-duration: 5s; }
+        }
+    </style>
+
+
+
+
+
+  <!-- ================= CORE META ================= -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ================= TITLE (MOST IMPORTANT) ================= -->
+  <title>
+    Software Development Company in Hubli–Dharwad | Kreosoftwares – Web, App & IT Solutions
+  </title>
+
+  <!-- ================= META DESCRIPTION ================= -->
+  <meta name="description" content="
+    Kreosoftwares is a leading software development company in Hubli–Dharwad, Karnataka.
+    We specialize in website development, web applications, mobile apps, internships,
+    academic projects, enterprise software, and IT solutions across India.
+  ">
+
+  <!-- ================= KEYWORDS (ADVANCED + LOCAL + AI) ================= -->
+  <meta name="keywords" content="
+    software company in hubli,
+    software company in dharwad,
+    hubli dharwad software development,
+    best software company hubli,
+    web development hubli,
+    website development dharwad,
+    software services karnataka,
+    mobile app development hubli,
+    internship projects hubli dharwad,
+    academic projects hubli,
+    final year projects hubli,
+    software training hubli,
+    it company hubli dharwad,
+    startup software partner karnataka,
+    custom software india,
+    kreosoftwares hubli,
+    kreosoftwares dharwad
+  ">
+
+  <!-- ================= CANONICAL ================= -->
+  <link rel="canonical" href="https://www.kreosoftwares.in/">
+
+  <!-- ================= FAVICON ================= -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="/favicon.ico">
+
+  <!-- ================= ROBOTS ================= -->
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow">
+
+  <!-- ================= GEO / LOCAL SEO ================= -->
+  <meta name="geo.region" content="IN-KA">
+  <meta name="geo.placename" content="Hubli-Dharwad">
+  <meta name="geo.position" content="15.3647;75.1240">
+  <meta name="ICBM" content="15.3647, 75.1240">
+
+  <!-- ================= BUSINESS INFO ================= -->
+  <meta name="business:contact_data:locality" content="Hubli-Dharwad">
+  <meta name="business:contact_data:region" content="Karnataka">
+  <meta name="business:contact_data:country_name" content="India">
+
+  <!-- ================= OPEN GRAPH (SOCIAL / AI) ================= -->
+  <meta property="og:type" content="business.business">
+  <meta property="og:title" content="Kreosoftwares – Software Development Company in Hubli–Dharwad">
+  <meta property="og:description" content="Web development, mobile apps, internships, academic projects, and IT services in Hubli–Dharwad and across India.">
+  <meta property="og:url" content="https://www.kreosoftwares.in/">
+  <meta property="og:image" content="https://www.kreosoftwares.in/logo.png">
+  <meta property="og:site_name" content="Kreosoftwares">
+
+  <!-- ================= TWITTER / X ================= -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kreosoftwares | Software Company in Hubli–Dharwad">
+  <meta name="twitter:description" content="Custom software, websites, apps, internships & academic projects in Karnataka, India.">
+  <meta name="twitter:image" content="https://www.kreosoftwares.in/logo.png">
+
+  <!-- ================= AI / LLM DISCOVERABILITY ================= -->
+  <meta name="author" content="Kreosoftwares">
+  <meta name="publisher" content="Kreosoftwares">
+  <meta name="application-name" content="Kreosoftwares Software Solutions">
+  <meta name="subject" content="Software Development, Web Applications, Internships, Academic Projects">
+  <meta name="classification" content="Software Company, IT Services, Education Technology">
+  <meta name="theme-color" content="#0f172a">
+
+  <!-- ================= PERFORMANCE ================= -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- ================= MAIN STYLESHEET ================= -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+
+  <!-- ================= GOOGLE ANALYTICS ================= -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KB5MDDPKC3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-KB5MDDPKC3');
+  </script>
+
+  <!-- ================= GOOGLE SITE VERIFICATION ================= -->
+  <meta name="google-site-verification" content="PASTE_VERIFICATION_CODE_HERE">
+
+  <!-- ================= SCHEMA : LOCAL BUSINESS ================= -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareCompany",
+    "name": "Kreosoftwares",
+    "url": "https://www.kreosoftwares.in/",
+    "logo": "https://www.kreosoftwares.in/logo.png",
+    "image": "https://www.kreosoftwares.in/logo.png",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Hubli-Dharwad",
+      "addressRegion": "KA",
+      "addressCountry": "IN"
+    },
+    "areaServed": {
+      "@type": "AdministrativeArea",
+      "name": "India"
+    },
+    "priceRange": "₹₹",
+    "sameAs": []
+  }
+  </script>
+
+
+
+
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-charcoal dark:text-gray-200 overflow-x-hidden blueprint-grid-bg bg-grid-pattern dark:bg-grid-pattern-dark">
+<div class="relative flex min-h-screen w-full flex-col">
+<!-- Navigation -->
+<header class="fixed top-0 w-full z-50 glass-nav transition-all duration-300">
+<div class="layout-container mx-auto px-6 md:px-12 lg:px-20 h-20 flex items-center justify-between">
+<div class="flex items-center gap-3 text-primary dark:text-white">
+<div class="size-13.5 flex items-center justify-center rounded bg-primary/10 dark:bg-white/10">
+<img src="/logo.jpeg"
+     alt="Kreo Softwares logo"
+     class="w-12 md:w-12 h-auto object-contain">
+
+<path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M2 17L12 22L22 17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M2 12L12 17L22 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h2 class="text-xl font-bold tracking-tight">Kreo Softwares </h2>
+</div>
+<div class="hidden md:flex flex-1 justify-end gap-10 items-center">
+<nav class="flex items-center gap-8">
+<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-white transition-colors" href="#services"  rel="noopener noreferrer">Services</a>
+<!-- <a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-white transition-colors" href="#">Case Studies</a> -->
+<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-white transition-colors" href="#insight" rel="noopener noreferrer">Insights</a>
+</nav>
+                <button data-url="https://docs.google.com/forms/d/e/1FAIpQLSeqSIyE2cCTSjNK8b7_HFdrt096DWIZQNxBU282n9bAYvjlog/viewform?usp=header " class="bg-primary hover:bg-primary/90 text-white text-sm font-bold h-10 px-6 rounded transition-colors shadow-lg shadow-primary/20">
+                        Start Project
+                    </button>
+</div>
+<!-- Mobile Menu Icon -->
+<div class="md:hidden text-gray-800 dark:text-white cursor-pointer">
+<span class="material-symbols-outlined">menu</span>
+</div>
+</div>
+</header>
+<!-- MSME Top-right Banner (change src to your provided logo path if needed) -->
+
+<!-- Main Content Wrapper -->
+<main class="flex-grow pt-20">
+<!-- Hero Section -->
+ <div class="msme-banner" aria-hidden="false" title="MSME">
+    <img src="/msme.png" alt="MSME Logo">
+</div>
+<section class="relative px-6 md:px-12 lg:px-20 py-20 md:py-32 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
+<div class="flex-1 flex flex-col gap-6 z-10 fade-in-up">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 border border-primary/10 w-fit">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="text-xs font-semibold uppercase tracking-wider text-primary">Business Redesigned!</span>
+</div>
+<h1 class="text-4xl md:text-6xl font-black text-gray-900 dark:text-white leading-tight tracking-tight">
+                        Engineering Digital <br/><span class="text-primary">Transformation</span>
+</h1>
+<p class="text-lg text-gray-600 dark:text-gray-400 max-w-xl leading-relaxed">
+                        We build scalable, intelligent systems designed for the modern enterprise. From precise code blueprints to robust cloud infrastructures.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4 pt-4 w-full">
+                <button data-url="#business" class="bg-primary text-white h-12 px-8 rounded font-bold hover:bg-primary/90 transition-all shadow-xl shadow-primary/20 flex items-center gap-2 justify-center w-full sm:w-auto">
+<span>Explore BusinessFlow OS</span>
+<span class="material-symbols-outlined text-[20px]">arrow_downward</span>
+</button>
+<button data-url="https://docs.google.com/forms/d/e/1FAIpQLSfqlB98dAnGISbReIGRJjDMlCRktA2zE2V3Dr6T6XBTvZUoRg/viewform?usp=header " class="bg-white dark:bg-transparent border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-white h-12 px-8 rounded font-medium hover:bg-gray-50 dark:hover:bg-white/5 transition-colors w-full sm:w-auto text-center">
+                            Contact Us !
+                        </button>
+</div>
+</div>
+<div class="flex-1 w-full relative h-[400px] md:h-[500px] rounded-xl overflow-hidden shadow-2xl border border-gray-200 dark:border-gray-800 fade-in-up delay-200">
+<div class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent z-10 mix-blend-multiply pointer-events-none"></div>
+<div class="w-full h-full bg-cover bg-center" data-alt="Abstract tech visualization of server racks and data flow" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBLqos0TfKe6ugoeXZVU03zswYj9grdHFvhAfilUtzgkuA8ZVCVC-qeMavBMYx1cj4ON5ZEwXXlEpF2lm8ZIu5yYoykIPv4xOuIyBTdrCmNp3XRU86SynSriQjz0aV0Jv_0_-nKBCj1OKVHGzpq4np7E5Bf73wU_7bIpAIwIZRaz4fq_E-UPmP8q1hdRqIhm7lDsTIFOTIIOeM3x9sIw7A7eselisslWBw_Bg1fFP1Yx85HMD-iIG5Ah_dFRHRC8YBQhdv6pP0AWTAM');"></div>
+<!-- Floating Data Card Decoration -->
+<div class="absolute bottom-8 left-8 right-8 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md p-6 rounded-lg border border-gray-200 dark:border-gray-700 shadow-lg z-20 hidden md:block">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+<span class="material-symbols-outlined">check_circle</span>
+</div>
+<div>
+<div class="text-sm font-bold text-gray-900 dark:text-white">System Status</div>
+<div class="text-xs text-gray-500">All systems operational</div>
+</div>
+</div>
+<span class="text-primary font-mono text-xs">99.9% Uptime</span>
+</div>
+<div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
+<div class="bg-primary h-1.5 rounded-full" style="width: 92%"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Tech Stack Ticker (animated marquee) -->
+<div class="w-full border-y border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 py-6">
+    <div class="layout-container mx-auto px-6 md:px-12 lg:px-20">
+        <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4 text-center">Powered by Modern Standards</p>
+        <div class="ticker mt-2 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+            <div class="ticker-track">
+                <div class="ticker-group">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-4xl">code_blocks</span>
+                        <span class="font-bold text-xl">React</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-4xl">terminal</span>
+                        <span class="font-bold text-xl">NodeJS</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-4xl">cloud</span>
+                        <span class="font-bold text-xl">AWS</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-4xl">data_object</span>
+                        <span class="font-bold text-xl">Python</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-4xl">deployed_code</span>
+                        <span class="font-bold text-xl">Docker</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-4xl">dataset</span>
+                        <span class="font-bold text-xl">Postgres</span>
+                    </div>
+                </div>
+                <!-- duplicate group for seamless continuous scroll -->
+                <div class="ticker-group" aria-hidden="true">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-4xl">code_blocks</span>
+                        <span class="font-bold text-xl">React</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-4xl">terminal</span>
+                        <span class="font-bold text-xl">NodeJS</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-4xl">cloud</span>
+                        <span class="font-bold text-xl">AWS</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-4xl">data_object</span>
+                        <span class="font-bold text-xl">Python</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-4xl">deployed_code</span>
+                        <span class="font-bold text-xl">Docker</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-4xl">dataset</span>
+                        <span class="font-bold text-xl">Postgres</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Features Grid Section -->
+<section id="services"class="py-24 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6 fade-in-up">
+<div>
+<h2 class="text-3xl md:text-5xl font-black text-gray-900 dark:text-white mb-4 tracking-tight">Solution Blueprints</h2>
+<p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl">
+                            Detailed technical specifications for our core service categories. Each solution is architected for scalability and performance.
+                        </p>
+</div>
+<button data-url="#services" class="text-primary hover:text-primary/80 font-bold flex items-center gap-2 group">
+                        View Full Specs
+                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_right_alt</span>
+                    </button>
+</div>
+<div   class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<div class="blueprint-card bg-white dark:bg-gray-800 border border-platinum dark:border-gray-700 rounded-lg p-8 flex flex-col justify-between h-80 fade-in-up delay-100 group">
+<div class="absolute inset-0 tech-bg-pattern pointer-events-none"></div>
+<div class="relative z-10">
+<div class="w-12 h-12 border border-gray-200 dark:border-gray-600 rounded bg-gray-50 dark:bg-gray-700 flex items-center justify-center mb-6 text-primary">
+<span class="material-symbols-outlined text-[28px]">architecture</span>
+</div>
+<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Business Websites</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                                Custom frontend/backend solutions built for scale. Utilizing React, Next.js, and robust API layers.
+                            </p>
+</div>
+<div class="relative z-10 pt-6 mt-auto border-t border-dashed border-gray-200 dark:border-gray-700 flex items-center justify-between">
+
+</div>
+</div>
+<!-- Card 2 -->
+<div class="blueprint-card bg-white dark:bg-gray-800 border border-platinum dark:border-gray-700 rounded-lg p-8 flex flex-col justify-between h-80 fade-in-up delay-200 group">
+<div class="absolute inset-0 tech-bg-pattern pointer-events-none"></div>
+<div class="relative z-10">
+<div class="w-12 h-12 border border-gray-200 dark:border-gray-600 rounded bg-gray-50 dark:bg-gray-700 flex items-center justify-center mb-6 text-primary">
+<span class="material-symbols-outlined text-[28px]">table_chart</span>
+</div>
+<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Administrative Systems</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                                Robust dashboards and internal tooling systems designed to streamline operations and data management.
+                            </p>
+</div>
+<div class="relative z-10 pt-6 mt-auto border-t border-dashed border-gray-200 dark:border-gray-700 flex items-center justify-between">
+
+</div>
+</div>
+<!-- Card 3 -->
+<div class="blueprint-card bg-white dark:bg-gray-800 border border-platinum dark:border-gray-700 rounded-lg p-8 flex flex-col justify-between h-80 fade-in-up delay-300 group">
+<div class="absolute inset-0 tech-bg-pattern pointer-events-none"></div>
+<div class="relative z-10">
+<div class="w-12 h-12 border border-gray-200 dark:border-gray-600 rounded bg-gray-50 dark:bg-gray-700 flex items-center justify-center mb-6 text-primary">
+<span class="material-symbols-outlined text-[28px]">shopping_bag</span>
+</div>
+<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Internship and Academic projects</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                                Career-oriented internship and academic projects with practical exposure, guided development, and end-to-end  support
+</div>
+<div class="relative z-10 pt-6 mt-auto border-t border-dashed border-gray-200 dark:border-gray-700 flex items-center justify-between">
+
+</div>
+</div>
+<!-- Card 4 -->
+<div class="blueprint-card bg-white dark:bg-gray-800 border border-platinum dark:border-gray-700 rounded-lg p-8 flex flex-col justify-between h-80 fade-in-up delay-100 group">
+<div class="absolute inset-0 tech-bg-pattern pointer-events-none"></div>
+<div class="relative z-10">
+<div class="w-12 h-12 border border-gray-200 dark:border-gray-600 rounded bg-gray-50 dark:bg-gray-700 flex items-center justify-center mb-6 text-primary">
+<span class="material-symbols-outlined text-[28px]">memory</span>
+</div>
+<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">AI &amp; Machine Learning</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                                Predictive models and intelligent automation. Integrating LLMs and custom datasets for smarter workflows.
+                            </p>
+</div>
+<div class="relative z-10 pt-6 mt-auto border-t border-dashed border-gray-200 dark:border-gray-700 flex items-center justify-between">
+
+</div>
+</div>
+<!-- Card 5 -->
+<div class="blueprint-card bg-white dark:bg-gray-800 border border-platinum dark:border-gray-700 rounded-lg p-8 flex flex-col justify-between h-80 fade-in-up delay-200 group">
+<div class="absolute inset-0 tech-bg-pattern pointer-events-none"></div>
+<div class="relative z-10">
+<div class="w-12 h-12 border border-gray-200 dark:border-gray-600 rounded bg-gray-50 dark:bg-gray-700 flex items-center justify-center mb-6 text-primary">
+<span class="material-symbols-outlined text-[28px]">cloud_upload</span>
+</div>
+<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Social Media Marketing</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                                Data-driven social media marketing and brand growth. Campaign optimization and audience engagement systems.</p>
+</div>
+<div class="relative z-10 pt-6 mt-auto border-t border-dashed border-gray-200 dark:border-gray-700 flex items-center justify-between">
+
+</div>
+</div>
+<!-- Card 6 -->
+<div class="blueprint-card bg-white dark:bg-gray-800 border border-platinum dark:border-gray-700 rounded-lg p-8 flex flex-col justify-between h-80 fade-in-up delay-300 group">
+<div class="absolute inset-0 tech-bg-pattern pointer-events-none"></div>
+<div class="relative z-10">
+<div class="w-12 h-12 border border-gray-200 dark:border-gray-600 rounded bg-gray-50 dark:bg-gray-700 flex items-center justify-center mb-6 text-primary">
+<span class="material-symbols-outlined text-[28px]">devices</span>
+</div>
+<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Hardware & Iot Projects</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                                Smart hardware solutions and IoT system development. Device automation and real-time data monitoring platforms.</p>
+</div>
+<div class="relative z-10 pt-6 mt-auto border-t border-dashed border-gray-200 dark:border-gray-700 flex items-center justify-between">
+
+</div>
+</div>
+</div>
+</section>
+<!-- Process / Timeline Section -->
+<section class="py-20 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+<div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
+<div class="text-center mb-16">
+<span class="text-xs font-bold text-primary uppercase tracking-widest mb-2 block">Our Methodology</span>
+<h2 class="text-3xl font-black text-gray-900 dark:text-white">Execution Pipeline</h2>
+</div>
+<div class="relative">
+<!-- Horizontal Line for Desktop -->
+<div class="hidden md:block absolute top-[40px] left-0 right-0 h-0.5 bg-gray-200 dark:bg-gray-700 z-0"></div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+<!-- Step 1 -->
+<div class="relative z-10 flex flex-col md:items-center text-left md:text-center group">
+<div class="w-20 h-20 rounded-full bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 group-hover:border-primary transition-colors flex items-center justify-center mb-6 shadow-sm">
+<span class="material-symbols-outlined text-3xl text-gray-400 group-hover:text-primary transition-colors">search</span>
+</div>
+<h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Analysis</h4>
+<p class="text-sm text-gray-500 leading-relaxed">Deep dive requirements gathering and feasibility studies.</p>
+</div>
+<!-- Step 2 -->
+<div class="relative z-10 flex flex-col md:items-center text-left md:text-center group">
+<div class="w-20 h-20 rounded-full bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 group-hover:border-primary transition-colors flex items-center justify-center mb-6 shadow-sm">
+<span class="material-symbols-outlined text-3xl text-gray-400 group-hover:text-primary transition-colors">architecture</span>
+</div>
+<h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Blueprint</h4>
+<p class="text-sm text-gray-500 leading-relaxed">System architecture design and database schema mapping.</p>
+</div>
+<!-- Step 3 -->
+<div class="relative z-10 flex flex-col md:items-center text-left md:text-center group">
+<div class="w-20 h-20 rounded-full bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 group-hover:border-primary transition-colors flex items-center justify-center mb-6 shadow-sm">
+<span class="material-symbols-outlined text-3xl text-gray-400 group-hover:text-primary transition-colors">construction</span>
+</div>
+<h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Build</h4>
+<p class="text-sm text-gray-500 leading-relaxed">Agile development cycles with continuous integration.</p>
+</div>
+<!-- Step 4 -->
+<div class="relative z-10 flex flex-col md:items-center text-left md:text-center group">
+<div class="w-20 h-20 rounded-full bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 group-hover:border-primary transition-colors flex items-center justify-center mb-6 shadow-sm">
+<span class="material-symbols-outlined text-3xl text-gray-400 group-hover:text-primary transition-colors">rocket_launch</span>
+</div>
+<h4 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Deploy</h4>
+<p class="text-sm text-gray-500 leading-relaxed">Rigorous QA testing, staging, and production launch.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Comparison Section -->
+<section id="insight" class="bg-background-light py-24">
+<div class="mx-auto max-w-7xl px-6 lg:px-8">
+<div class="mb-12 text-center">
+<h2 class="text-3xl font-bold text-text-main">Why Choose Kreo?</h2>
+<p class="text-text-muted">We deliver innovative, scalable, and secure solutions tailored to your business needs—combining expert talent, modern technology, and a results-driven approach</p>
+</div>
+<div class="overflow-hidden rounded-xl border border-accent-border bg-white shadow-sm">
+<div class="grid grid-cols-1 md:grid-cols-3 bg-gray-50 p-6 border-b border-accent-border">
+<div class="col-span-1 text-sm font-medium text-text-muted uppercase tracking-wider pt-2">Features</div>
+<div class="col-span-1 text-center font-bold text-lg text-gray-400">Others / Freelancers</div>
+<div class="col-span-1 text-center font-bold text-xl text-primary bg-primary/5 rounded-t-lg md:-mb-6 md:pb-6 pb-4 pt-2 border-t border-x border-primary/20 relative top-[-1px]">KreoSoftwares</div>
+</div>
+<!-- Row 1 -->
+<div class="grid grid-cols-1 md:grid-cols-3 p-6 border-b border-gray-100 hover:bg-gray-50 transition-colors">
+<div class="col-span-1 font-bold text-text-main flex items-center gap-2">
+<span class="material-symbols-outlined text-gray-400">speed</span>
+                        Speed to Market
+                    </div>
+<div class="col-span-1 text-center text-text-muted">Weeks to Months</div>
+<div class="col-span-1 text-center font-bold text-primary bg-primary/5 md:-my-6 md:py-6 py-4 flex items-center justify-center border-x border-primary/20">Days</div>
+</div>
+<!-- Row 2 -->
+<div class="grid grid-cols-1 md:grid-cols-3 p-6 border-b border-gray-100 hover:bg-gray-50 transition-colors">
+<div class="col-span-1 font-bold text-text-main flex items-center gap-2">
+<span class="material-symbols-outlined text-gray-400">integration_instructions</span>
+                        Full Integration
+                    </div>
+<div class="col-span-1 text-center flex justify-center text-red-400"><span class="material-symbols-outlined">close</span></div>
+<div class="col-span-1 text-center flex justify-center text-primary bg-primary/5 md:-my-6 md:py-6 py-4 border-x border-primary/20"><span class="material-symbols-outlined">check_circle</span></div>
+</div>
+<!-- Row 3 -->
+<div class="grid grid-cols-1 md:grid-cols-3 p-6 border-b border-gray-100 hover:bg-gray-50 transition-colors">
+<div class="col-span-1 font-bold text-text-main flex items-center gap-2">
+<span class="material-symbols-outlined text-gray-400">support_agent</span>
+                        Ongoing Support
+                    </div>
+<div class="col-span-1 text-center text-text-muted">Hourly Billing</div>
+<div class="col-span-1 text-center font-bold text-primary bg-primary/5 md:-my-6 md:py-6 py-4 border-x border-primary/20">Included Partner</div>
+</div>
+<!-- Row 4 -->
+<div class="grid grid-cols-1 md:grid-cols-3 p-6 hover:bg-gray-50 transition-colors">
+<div class="col-span-1 font-bold text-text-main flex items-center gap-2">
+<span class="material-symbols-outlined text-gray-400">psychology</span>
+                        AI Native
+                    </div>
+<div class="col-span-1 text-center flex justify-center text-red-400"><span class="material-symbols-outlined">close</span></div>
+<div class="col-span-1 text-center flex justify-center text-primary bg-primary/5 md:-my-6 md:py-6 py-4 border-x border-primary/20"><span class="material-symbols-outlined">check_circle</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-24 px-6 md:px-12 lg:px-20 bg-primary text-white relative overflow-hidden">
+<div class="absolute inset-0 opacity-10" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAir8OAe23gyAJb7Ys8e--PwEWEVpsd9KqqHCGyB_LacEKOS1d2ihUbkkCu30OPJ7bIk5NnyIyOfX3flmz3w-vZq5vMPt8n5TSg4SRAzOHwolDiCcdIVwPycA1UDirwU72PaZYexR_bDrbMPXiQJyMB7We5BbJJm_othvO_kZtSYrr0Knkg_Jco3E3670rJ2Rh6LOrY97wwUp_L2CEO6ta0mUVbiWbBjr8L5ERhp8hf_Po0ROtjniZoVjpYFwkLVizMuqpLknpgN84L');"></div>
+<div class="max-w-4xl mx-auto text-center relative z-10">
+<h2 class="text-4xl md:text-5xl font-black mb-6 tracking-tight">Ready to engineer your solution?</h2>
+<p class="text-lg md:text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
+                        Consult with our Experts today to transform your requirements into a robust technical reality.
+                    </p>
+<div class="flex flex-col sm:flex-row justify-center gap-4">
+<button data-url="https://docs.google.com/forms/d/e/1FAIpQLSfqlB98dAnGISbReIGRJjDMlCRktA2zE2V3Dr6T6XBTvZUoRg/viewform?usp=header " class="bg-white text-primary h-14 px-8 rounded font-bold hover:bg-gray-100 transition-colors shadow-lg text-lg w-full sm:w-auto text-center">
+                           Book a Free Consultation
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- BusinessFlow OS Section -->
+<section id= "business"class="bg-white py-24 relative overflow-hidden">
+<div class="absolute inset-0 bg-primary/5 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+<div class="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
+<div class="mb-16 text-center">
+<h2 class="text-3xl font-bold tracking-tight text-text-main sm:text-4xl mb-4"> Want Our Full Service ?<br> Introducing BusinessFlow OS</h2>
+<p class="text-lg text-text-muted max-w-2xl mx-auto">Our proprietary operating system that connects every aspect of your digital presence into a unified machine.</p>
+</div>
+<!-- Flowchart Visualization -->
+<div class="relative mt-12 hidden md:block">
+<!-- Connecting Line -->
+<div class="absolute top-1/2 left-0 w-full h-1 bg-gray-100 -translate-y-1/2 z-0"></div>
+<div class="absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-primary/0 via-primary to-primary/0 -translate-y-1/2 z-0 opacity-50"></div>
+<div class="grid grid-cols-4 gap-4 relative z-10">
+<!-- Step 1 -->
+<div class="flex flex-col items-center">
+<div class="w-20 h-20 bg-white border-2 border-primary rounded-full flex items-center justify-center shadow-lg mb-6 relative">
+<span class="material-symbols-outlined text-primary text-3xl">public</span>
+<div class="absolute -bottom-2 bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded-full">STEP 1</div>
+</div>
+<h4 class="text-lg font-bold text-text-main">Website</h4>
+<p class="text-center text-sm text-text-muted mt-2 px-4">High-conversion landing pages capture traffic.</p>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col items-center">
+<div class="w-20 h-20 bg-white border-2 border-primary rounded-full flex items-center justify-center shadow-lg mb-6 relative">
+<span class="material-symbols-outlined text-primary text-3xl">hub</span>
+<div class="absolute -bottom-2 bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded-full">STEP 2</div>
+</div>
+<h4 class="text-lg font-bold text-text-main">CRM Integration</h4>
+<p class="text-center text-sm text-text-muted mt-2 px-4">Leads are instantly routed and qualified.</p>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-col items-center">
+<div class="w-20 h-20 bg-white border-2 border-primary rounded-full flex items-center justify-center shadow-lg mb-6 relative">
+<span class="material-symbols-outlined text-primary text-3xl">settings_suggest</span>
+<div class="absolute -bottom-2 bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded-full">STEP 3</div>
+</div>
+<h4 class="text-lg font-bold text-text-main">Automation</h4>
+<p class="text-center text-sm text-text-muted mt-2 px-4">Follow-ups, scheduling, and nurturing happen 24/7.</p>
+</div>
+<!-- Step 4 -->
+<div class="flex flex-col items-center">
+<div class="w-20 h-20 bg-white border-2 border-primary rounded-full flex items-center justify-center shadow-lg mb-6 relative">
+<span class="material-symbols-outlined text-primary text-3xl">monitoring</span>
+<div class="absolute -bottom-2 bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded-full">STEP 4</div>
+</div>
+<h4 class="text-lg font-bold text-text-main">Analytics</h4>
+<p class="text-center text-sm text-text-muted mt-2 px-4">Real-time data for instant optimization.</p>
+</div>
+</div>
+</div>
+<!-- Mobile View List for Flow -->
+<div class="flex flex-col gap-6 md:hidden">
+<div class="flex items-start gap-4 p-4 border rounded-lg bg-gray-50">
+<div class="shrink-0 w-10 h-10 rounded-full bg-primary/20 text-primary flex items-center justify-center">1</div>
+<div>
+<h4 class="font-bold">Website</h4>
+<p class="text-sm text-text-muted">High-conversion landing pages.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 border rounded-lg bg-gray-50">
+<div class="shrink-0 w-10 h-10 rounded-full bg-primary/20 text-primary flex items-center justify-center">2</div>
+<div>
+<h4 class="font-bold">CRM Integration</h4>
+<p class="text-sm text-text-muted">Leads are instantly routed.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 border rounded-lg bg-gray-50">
+<div class="shrink-0 w-10 h-10 rounded-full bg-primary/20 text-primary flex items-center justify-center">3</div>
+<div>
+<h4 class="font-bold">Automation</h4>
+<p class="text-sm text-text-muted">Follow-ups happen 24/7.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 border rounded-lg bg-gray-50">
+<div class="shrink-0 w-10 h-10 rounded-full bg-primary/20 text-primary flex items-center justify-center">4</div>
+<div>
+<h4 class="font-bold">Analytics</h4>
+<p class="text-sm text-text-muted">Real-time data for optimization.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<footer class="bg-card-bg border-t border-border-subtle pt-16 pb-8" id="contact">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<div class="grid gap-12 lg:grid-cols-2">
+<div>
+<div class="flex items-center gap-3 mb-6">
+<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+<!-- <img href="logo.jpeg" width="200px"height="200px"></span> --><img src="/logo.jpeg"
+     alt="Kreo Softwares logo"
+     class="w-12 md:w-12 rounded-lg h-auto object-contain">
+</div>
+<span class="font-display text-2xl font-bold text-text-main">Kreo Softwares</span>
+</div>
+<p class="mb-8 max-w-md text-text-body">
+                        Your trusted partner 
+                    </p>
+<div class="space-y-4">
+<div class="flex items-start gap-4">
+<div class="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-page-bg text-primary border border-border-subtle">
+<span class="material-symbols-outlined">location_on</span>
+</div>
+<div>
+<h4 class="font-bold text-text-main">Visit Us</h4>
+<p class="text-sm text-text-body">Shop No. 27 1st floor RN Shetty Complex, Kreo Softwares, Near Jublie Circle, Kcd Road, Dharwad College Road, Dharwad-580001, Karnataka</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-page-bg text-primary border border-border-subtle">
+<span class="material-symbols-outlined">call</span>
+</div>
+<div>
+<h4 class="font-bold text-text-main">Call Us</h4>
+<a href="tel:+918123685041"><p class="text-sm text-text-body">+91 8123685041</p></a>
+<a href="tel:+919980411129"><p class="text-sm text-text-body">+91 9980411129</p></a>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-page-bg text-primary border border-border-subtle">
+<span class="material-symbols-outlined">mail</span>
+</div>
+<div>
+<h4 class="font-bold text-text-main">Email Us</h4>
+<a href="mailto:kreo.pvt.ltd@gmail.com"><p class="text-sm text-text-body">kreo.pvt.ltd@gmail.com</p></a>
+<!-- <p class="text-sm text-text-body">GSTIN: 29ACKPH485SH1Z6</p> -->
+</div>
+</div>
+</div>
+</div>
+<div class="h-full min-h-[300px] w-full overflow-hidden rounded-2xl bg-page-bg p-2 border border-border-subtle">
+<div class="h-full w-full rounded-xl bg-gray-200 relative overflow-hidden group">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d961.3706469115438!2d75.00518294224212!3d15.458452839895836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb8cdc28c3bae0b%3A0x1ecd41c0225b730d!2sPLANNET-M%20ART%2C%20DHARWAD!5e0!3m2!1sen!2sin!4v1769062611686!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+</div>
+</div>
+<div class="mt-16 border-t border-border-subtle pt-8">
+<div class="flex flex-col items-center justify-between gap-4 md:flex-row">
+
+<!-- <div class="flex gap-6">
+<a class="text-text-light hover:text-primary" href="#"><span class="sr-only">Facebook</span>
+<svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+<path clip-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill-rule="evenodd"></path>
+</svg>
+</a>
+<a class="text-text-light hover:text-primary" href="#"><span class="sr-only">Instagram</span>
+<svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+<path clip-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.047-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772 4.902 4.902 0 011.772-1.153c.636-.247 1.363-.416 2.427-.465C9.673 2.013 10.03 2 12.315 2zm-1.2 1.961c-3.27 0-3.665.01-4.947.068-1.277.058-2.153.28-2.91.575a2.955 2.955 0 00-1.076.699 2.955 2.955 0 00-.699 1.076c-.295.757-.517 1.633-.575 2.91-.058 1.282-.068 1.677-.068 4.947 0 3.27.01 3.665.068 4.947.058 1.277.28 2.153.575 2.91a2.955 2.955 0 00.699 1.076 2.955 2.955 0 001.076.699c.757.295 1.633.517 2.91.575 1.282.058 1.677.068 4.947.068 3.27 0 3.665-.01 4.947-.068 1.277-.058 2.153-.28 2.91-.575a2.955 2.955 0 001.076-.699 2.955 2.955 0 00.699-1.076c.295-.757.517-1.633.575-2.91.058-1.282.068-1.677.068-4.947 0-3.27-.01-3.665-.068-4.947-.058-1.277-.28-2.153-.575-2.91a2.955 2.955 0 00-.699-1.076 2.955 2.955 0 00-1.076-.699c-.757-.295-1.633-.517-2.91-.575-1.282-.058-1.677-.068-4.947-.068zM12 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" fill-rule="evenodd"></path>
+</svg> -->
+
+</div>
+</div>
+</div>
+
+</footer>
+
+
+
+
+
+
+
+
+<!-- Footer -->
+<footer class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 py-12 px-6 md:px-12 lg:px-20">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-3 text-gray-900 dark:text-white">
+<div class="size-6 flex items-center justify-center rounded bg-primary/10 dark:bg-white/10 text-primary dark:text-white">
+<img class="footer-logo" src="/logo.jpeg" alt="Kreo Softwares logo">
+<path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<span class="text-lg font-bold">Kreo Softwares</span>
+</div>
+<div class="text-sm text-gray-500">
+                    © 2026 Kreo Softwares. All rights reserved.
+                </div>
+<div class="flex gap-6">
+<a href="https://instagram.com/kreo_softwares" target="_blank"
+   class="text-gray-400 hover:text-primary transition-colors text-xl">
+   <i class="fab fa-instagram"></i>
+</a>
+
+<a href="https://linkedin.com/in/kreo_softwares" target="_blank"
+   class="text-gray-400 hover:text-primary transition-colors text-xl">
+   <i class="fab fa-linkedin-in"></i>
+</a>
+
+<a href="https://wa.link/irrnl8" target="_blank"
+   class="text-gray-400 hover:text-primary transition-colors text-xl">
+   <i class="fab fa-whatsapp"></i>
+</a>
+
+</div>
+</div>
+</footer>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Make any element with a data-url attribute open that URL on click (and on Enter/Space)
+    document.querySelectorAll('[data-url]').forEach(el => {
+        if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '0');
+
+        const openLink = (event) => {
+            // Only activate on click or Enter/Space key
+            if (event.type === 'keydown' && !['Enter', ' '].includes(event.key)) return;
+            const url = el.dataset.url;
+            if (!url) return;
+            // Always open links in a new tab/window for consistency
+            window.open(url, '_blank', 'noopener,noreferrer');
+        };
+
+        el.addEventListener('click', openLink);
+        el.addEventListener('keydown', openLink);
+    });
+});
+</script>
+</body></html>

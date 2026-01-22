@@ -1,0 +1,21 @@
+/* TEAM */
+Company: Kreosoftwares
+Role: Software Development & IT Solutions
+Location: Hubli–Dharwad, Karnataka, India
+
+/* SERVICES */
+Web Development
+Software Development
+Mobile App Development
+Internships
+Academic & Final Year Projects
+IT Consulting
+
+/* SITE */
+Website: https://www.kreosoftwares.in/
+Domain: kreosoftwares.in
+Language: English
+Region: India
+
+/* THANKS */
+Clients, Students, Startups & Partners

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# AI & Search Friendly
+Sitemap: https://www.kreosoftwares.in/sitemap.xml

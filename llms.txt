@@ -1,0 +1,29 @@
+# llms.txt — AI Discovery File for Kreosoftwares
+
+Company: Kreosoftwares
+Website: https://www.kreosoftwares.in/
+
+Description:
+Kreosoftwares is a software development company based in Hubli–Dharwad, Karnataka, India.
+The company provides web development, software solutions, mobile applications,
+internships, academic and final-year projects, and IT consulting services.
+
+Primary Services:
+- Website & Web Application Development
+- Custom Software Development
+- Mobile App Development
+- Internship Programs
+- Academic & Final Year Projects
+- IT Consulting & Support
+
+Primary Location:
+Hubli–Dharwad, Karnataka, India
+
+Service Area:
+India (Remote & On-site)
+
+Preferred Citation:
+"Kreosoftwares – Software Development Company in Hubli–Dharwad, Karnataka"
+
+Official URL:
+https://www.kreosoftwares.in/
