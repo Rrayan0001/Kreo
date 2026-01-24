@@ -112,10 +112,11 @@
         }
 
         @media (max-width: 640px) {
-            .msme-banner { width: 140px; height: 72px; top: 0.5rem; right: 0.5rem; }
+            /* Move banner down and make smaller on mobile */
+            .msme-banner { width: 120px; height: 64px; top: auto; bottom: 0.75rem; right: 0.75rem; }
         }
-        @media (max-width: 420px) {
-            /* Hide banner on very small devices to avoid overlap */
+        @media (max-width: 320px) {
+            /* Hide banner only on very very small devices to avoid overlap */
             .msme-banner { display: none; }
         }
         /* Tech stack marquee ticker */
@@ -313,21 +314,38 @@
                         Start Project
                     </button>
 </div>
-<!-- Mobile Menu Icon -->
-<div class="md:hidden text-gray-800 dark:text-white cursor-pointer">
-<span class="material-symbols-outlined">menu</span>
-</div>
+<!-- Mobile Menu Button -->
+<button id="mobile-menu-button" aria-label="Toggle menu" class="md:hidden text-gray-800 dark:text-white cursor-pointer bg-transparent border-0 p-2">
+    <span id="mobile-menu-icon" class="material-symbols-outlined text-3xl">menu</span>
+</button>
 </div>
 </header>
+<!-- Mobile Menu Overlay (hidden by default) -->
+<div id="mobile-menu" class="fixed inset-0 z-50 bg-white/95 dark:bg-gray-900/95 p-6 hidden md:hidden">
+    <div class="flex items-center justify-between mb-6">
+        <div class="flex items-center gap-3">
+            <img src="/logo.jpeg" alt="Kreo logo" class="w-10 h-auto object-contain">
+            <span class="font-bold text-lg">Kreo Softwares</span>
+        </div>
+        <button id="mobile-menu-close" aria-label="Close menu" class="text-gray-800 dark:text-white bg-transparent border-0">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+    </div>
+    <nav class="flex flex-col gap-4 text-lg">
+        <a href="#services" class="font-medium text-gray-800 dark:text-white">Services</a>
+        <a href="#insight" class="font-medium text-gray-800 dark:text-white">Insights</a>
+        <a data-url="https://docs.google.com/forms/d/e/1FAIpQLSeqSIyE2cCTSjNK8b7_HFdrt096DWIZQNxBU282n9bAYvjlog/viewform?usp=header " class="bg-primary text-white h-12 px-6 rounded inline-flex items-center justify-center w-full mt-4">Start Project</a>
+    </nav>
+</div>
 <!-- MSME Top-right Banner (change src to your provided logo path if needed) -->
 
 <!-- Main Content Wrapper -->
-<main class="flex-grow pt-20">
+<main class="flex-grow pt-19">
 <!-- Hero Section -->
  <div class="msme-banner" aria-hidden="false" title="MSME">
     <img src="/msme.png" alt="MSME Logo">
 </div>
-<section class="relative px-6 md:px-12 lg:px-20 py-20 md:py-32 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
+<section class="relative px-6 md:px-12 lg:px-20 py-20 md:py-32 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-14">
 <div class="flex-1 flex flex-col gap-6 z-10 fade-in-up">
 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 border border-primary/10 w-fit">
 <span class="w-2 h-2 rounded-full bg-primary"></span>
@@ -599,7 +617,7 @@
 <h2 class="text-3xl font-bold text-text-main">Why Choose Kreo?</h2>
 <p class="text-text-muted">We deliver innovative, scalable, and secure solutions tailored to your business needs—combining expert talent, modern technology, and a results-driven approach</p>
 </div>
-<div class="overflow-hidden rounded-xl border border-accent-border bg-white shadow-sm">
+<div class="overflow-hidden rounded-xl border border-accent-border bg-white shadow-sm hidden md:block">
 <div class="grid grid-cols-1 md:grid-cols-3 bg-gray-50 p-6 border-b border-accent-border">
 <div class="col-span-1 text-sm font-medium text-text-muted uppercase tracking-wider pt-2">Features</div>
 <div class="col-span-1 text-center font-bold text-lg text-gray-400">Others / Freelancers</div>
@@ -643,6 +661,67 @@
 </div>
 </div>
 </div>
+</div>
+
+<!-- Mobile-friendly stacked version of the comparison for small screens -->
+<div class="md:hidden px-6 lg:px-8 mx-auto max-w-7xl">
+    <div class="mb-6 text-center">
+        <h2 class="text-2xl font-bold">Why Choose Kreo?</h2>
+        <p class="text-sm text-gray-500">We deliver innovative, scalable, and secure solutions tailored to your business needs.</p>
+    </div>
+
+    <div class="space-y-4">
+        <!-- Card 1 -->
+        <div class="p-4 border rounded-lg bg-white">
+            <div class="flex items-center justify-between">
+                <div class="font-bold flex items-center gap-2"><span class="material-symbols-outlined text-gray-400">speed</span> Speed to Market</div>
+                <div class="text-sm text-gray-500">Weeks to Months</div>
+            </div>
+            <div class="mt-3 flex items-center justify-between">
+                <div class="text-sm text-gray-500">Others / Freelancers</div>
+                <div class="text-sm font-bold text-primary">Days</div>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="p-4 border rounded-lg bg-white">
+            <div class="flex items-center justify-between">
+                <div class="font-bold flex items-center gap-2"><span class="material-symbols-outlined text-gray-400">integration_instructions</span> Full Integration</div>
+                <div class="text-sm text-red-400"><span class="material-symbols-outlined">close</span></div>
+            </div>
+            <div class="mt-3 flex items-center justify-between">
+                <div class="text-sm text-gray-500">Others / Freelancers</div>
+                <div class="text-sm font-bold text-primary"><span class="material-symbols-outlined">check_circle</span></div>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="p-4 border rounded-lg bg-white">
+            <div class="flex items-center justify-between">
+                <div class="font-bold flex items-center gap-2"><span class="material-symbols-outlined text-gray-400">support_agent</span> Ongoing Support</div>
+                <div class="text-sm text-gray-500">Hourly Billing</div>
+            </div>
+            <div class="mt-3 flex items-center justify-between">
+                <div class="text-sm text-gray-500">Others / Freelancers</div>
+                <div class="text-sm font-bold text-primary">Included Partner</div>
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="p-4 border rounded-lg bg-white">
+            <div class="flex items-center justify-between">
+                <div class="font-bold flex items-center gap-2"><span class="material-symbols-outlined text-gray-400">psychology</span> AI Native</div>
+                <div class="text-sm text-red-400"><span class="material-symbols-outlined">close</span></div>
+            </div>
+            <div class="mt-3 flex items-center justify-between">
+                <div class="text-sm text-gray-500">Others / Freelancers</div>
+                <div class="text-sm font-bold text-primary"><span class="material-symbols-outlined">check_circle</span></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
 </section>
 
 <!-- CTA Section -->
@@ -769,7 +848,7 @@
 </div>
 <div>
 <h4 class="font-bold text-text-main">Visit Us</h4>
-<p class="text-sm text-text-body">Shop No. 27 1st floor RN Shetty Complex, Kreo Softwares, Near Jublie Circle, Kcd Road, Dharwad College Road, Dharwad-580001, Karnataka</p>
+<p class="text-sm text-text-body"> R N Shetty stadium complex , 1st floor shop no 27 , kcd college road , dharwad 580001 </p>
 </div>
 </div>
 <div class="flex items-start gap-4">
@@ -879,6 +958,41 @@ document.addEventListener('DOMContentLoaded', () => {
         el.addEventListener('click', openLink);
         el.addEventListener('keydown', openLink);
     });
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('mobile-menu-button');
+    const menu = document.getElementById('mobile-menu');
+    const menuClose = document.getElementById('mobile-menu-close');
+    const menuIcon = document.getElementById('mobile-menu-icon');
+
+    if (menuBtn && menu) {
+        const openMenu = () => {
+            menu.classList.remove('hidden');
+            menuBtn.setAttribute('aria-expanded', 'true');
+            if (menuIcon) menuIcon.textContent = 'close';
+            // prevent background scroll
+            document.body.style.overflow = 'hidden';
+        };
+
+        const closeMenu = () => {
+            menu.classList.add('hidden');
+            menuBtn.setAttribute('aria-expanded', 'false');
+            if (menuIcon) menuIcon.textContent = 'menu';
+            document.body.style.overflow = '';
+        };
+
+        menuBtn.addEventListener('click', () => {
+            if (menu.classList.contains('hidden')) openMenu(); else closeMenu();
+        });
+
+        if (menuClose) menuClose.addEventListener('click', closeMenu);
+
+        // Close on Escape
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !menu.classList.contains('hidden')) closeMenu(); });
+
+        // Close when a nav link inside the mobile menu is clicked (anchors)
+        menu.querySelectorAll('a[href], a[data-url]').forEach(a => a.addEventListener('click', () => closeMenu()));
+    }
 });
 </script>
 </body></html>
