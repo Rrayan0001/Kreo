@@ -126,7 +126,7 @@ export default function Chatbot() {
     }
   };
 
-  const handleSendMessage = (e: React.FormEvent) => {
+  const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!inputText.trim()) return;
 
@@ -134,37 +134,63 @@ export default function Chatbot() {
     setInputText("");
 
     // Add user message
-    setMessages((prev) => [
-      ...prev,
-      {
-        id: Math.random().toString(),
-        sender: "user",
-        text: query,
-      },
-    ]);
+    const userMessage: Message = {
+      id: Math.random().toString(),
+      sender: "user",
+      text: query,
+    };
 
-    // Simple keyword extraction for custom replies
-    const normalized = query.toLowerCase();
-    if (normalized.includes("service") || normalized.includes("web") || normalized.includes("app")) {
-      addBotResponse(
-        "We build enterprise websites, custom CRM portals, and AI systems. Would you like to explore our solutions?",
-        ["Our Services", "Main Menu"]
-      );
-    } else if (normalized.includes("contact") || normalized.includes("phone") || normalized.includes("email") || normalized.includes("number")) {
-      addBotResponse(
-        "You can connect directly with our development head:\n📞 +91 81236 85041\n✉️ kreo.pvt.ltd@gmail.com",
-        ["Book Consultation", "Main Menu"]
-      );
-    } else if (normalized.includes("project") || normalized.includes("build") || normalized.includes("hire")) {
-      addBotResponse(
-        "We are excited to help you build! You can get started by filling out our project form.",
-        ["Intake Form", "Main Menu"]
-      );
-    } else {
-      addBotResponse(
-        "Thank you for your message! To get a customized solution for your query, please book a consultation or check our quick links.",
-        ["Our Services", "Start a Project", "Contact Details", "Main Menu"]
-      );
+    const updatedMessages = [...messages, userMessage];
+    setMessages(updatedMessages);
+    setIsTyping(true);
+
+    try {
+      // Format messages history into role/content scheme expected by LLM APIs
+      const history = updatedMessages.map((msg) => ({
+        role: msg.sender === "bot" ? "assistant" : "user",
+        content: msg.text,
+      }));
+
+      // Call our Next.js API route
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messages: history }),
+      });
+
+      const data = await res.json();
+      setIsTyping(false);
+
+      if (res.ok && data.reply) {
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: Math.random().toString(),
+            sender: "bot",
+            text: data.reply,
+          },
+        ]);
+      } else {
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: Math.random().toString(),
+            sender: "bot",
+            text: "My backend service is not configured. Please add the GROQ_API_KEY to your environment settings, or call us directly at +91 81236 85041.",
+          },
+        ]);
+      }
+    } catch (err) {
+      console.error("Failed to query chatbot LLM:", err);
+      setIsTyping(false);
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: Math.random().toString(),
+          sender: "bot",
+          text: "I am having trouble connecting to the AI helper right now. Please check your network.",
+        },
+      ]);
     }
   };
 
