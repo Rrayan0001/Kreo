@@ -38,17 +38,17 @@ export default function Hero() {
         <div className="hero-video-overlay" />
 
         {/* Minimal centered text */}
-        <div className="relative z-10 w-full flex flex-col items-center justify-center text-center px-6 py-32">
-          <p className="fade-in text-xs font-bold uppercase tracking-[0.3em] text-orange-300 mb-6">
+        <div className="relative z-10 w-full flex flex-col items-center justify-center text-center px-5 sm:px-8 md:px-12 py-24 md:py-32">
+          <p className="fade-in text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] sm:tracking-[0.3em] text-orange-300 mb-4 sm:mb-6 px-2">
             Engineering Digital Transformation
           </p>
-          <h1 className="fade-in-up delay-100 text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-[1.02] tracking-tight max-w-4xl">
+          <h1 className="fade-in-up delay-100 text-[2rem] sm:text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[1.05] tracking-tight w-full max-w-xs sm:max-w-xl md:max-w-4xl">
             Build Smarter.<br />Grow Faster.
           </h1>
-          <div className="fade-in-up delay-300 mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="fade-in-up delay-300 mt-8 sm:mt-10 flex flex-col sm:flex-row gap-4 justify-center w-full max-w-xs sm:max-w-none">
             <a
               href="#services"
-              className="btn-primary bg-primary hover:bg-primary-hover text-white h-13 px-10 py-3.5 rounded-lg font-bold flex items-center gap-2 justify-center shadow-2xl shadow-primary/40 text-base"
+              className="btn-primary bg-primary hover:bg-primary-hover text-white h-12 sm:h-13 px-8 sm:px-10 py-3 sm:py-3.5 rounded-lg font-bold flex items-center gap-2 justify-center shadow-2xl shadow-primary/40 text-sm sm:text-base"
             >
               Explore Our Work
               <span className="material-symbols-outlined text-[18px]">arrow_downward</span>
