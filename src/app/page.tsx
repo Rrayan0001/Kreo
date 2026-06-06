@@ -8,6 +8,8 @@ import Comparison from "@/components/Comparison";
 import BusinessFlow from "@/components/BusinessFlow";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
+import CookieConsent from "@/components/CookieConsent";
+import Chatbot from "@/components/Chatbot";
 
 export default function Home() {
   return (
@@ -41,6 +43,10 @@ export default function Home() {
 
       {/* Footer */}
       <Footer />
+
+      {/* Interactive Widgets */}
+      <CookieConsent />
+      <Chatbot />
     </div>
   );
 }
