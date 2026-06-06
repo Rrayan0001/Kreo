@@ -1,100 +1,270 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 
 interface FlowStep {
   step: string;
   icon: string;
+  status: string;
+  statusColor: string;
   title: string;
+  tagline: string;
   description: string;
 }
 
 export default function BusinessFlow() {
+  const [activeStep, setActiveStep] = useState<number>(0);
+
+  // Auto-rotate steps every 4 seconds unless hovered/selected by user
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveStep((prev) => (prev + 1) % steps.length);
+    }, 4500);
+    return () => clearInterval(interval);
+  }, []);
+
   const steps: FlowStep[] = [
     {
       step: "01",
       icon: "public",
-      title: "Website",
-      description: "High-conversion landing pages capture traffic.",
+      status: "SYSTEM ACTIVE",
+      statusColor: "text-emerald-500 bg-emerald-50 border-emerald-200",
+      title: "Core Web Engine",
+      tagline: "High-Performance Conversions",
+      description: "Blazing-fast loading pages tailored for high conversion rates. Fully optimized for search engine rankings, accessibility, and fluid user interactions.",
     },
     {
       step: "02",
       icon: "hub",
-      title: "CRM Integration",
-      description: "Leads are instantly routed and qualified.",
+      status: "SYNC PIPELINE RUNNING",
+      statusColor: "text-blue-500 bg-blue-50 border-blue-200",
+      title: "Real-time CRM Sync",
+      tagline: "Instant Lead Routing",
+      description: "Leads captured are routed within milliseconds directly to your database or sales pipelines, triggering instant validation and notification workflows.",
     },
     {
       step: "03",
       icon: "settings_suggest",
-      title: "Automation",
-      description: "Follow-ups, scheduling, and nurturing happen 24/7.",
+      status: "DAEMON IDLE - LISTENING",
+      statusColor: "text-orange-500 bg-orange-50 border-orange-200",
+      title: "Automated Triggers",
+      tagline: "24/7 Action & Nurturing",
+      description: "Event-driven sequences that send personalized emails, schedule calendar hooks, and nurture prospects automatically without manual intervention.",
     },
     {
       step: "04",
       icon: "monitoring",
-      title: "Analytics",
-      description: "Real-time data for instant optimization.",
+      status: "COMPUTING REALTIME",
+      statusColor: "text-purple-500 bg-purple-50 border-purple-200",
+      title: "Predictive Analytics",
+      tagline: "Live Insights Dashboard",
+      description: "Consolidated user behaviors, page performance tracking, and conversion drop-offs visualized live to back up product choices with concrete data.",
     },
   ];
 
-  return (
-    <section id="business" className="bg-white py-16 md:py-24 relative overflow-hidden">
-      {/* Subtle orange glow top-right */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+  // Render the dynamic simulator screen based on active step
+  const renderSimulator = () => {
+    switch (activeStep) {
+      case 0:
+        return (
+          <div className="flex flex-col h-full justify-between p-5 text-zinc-800">
+            <div className="flex items-center justify-between border-b border-gray-100 pb-3">
+              <span className="text-xs font-mono font-bold text-gray-400">browser_preview.exe</span>
+              <div className="flex gap-1">
+                <span className="w-2.5 h-2.5 rounded-full bg-red-400"></span>
+                <span className="w-2.5 h-2.5 rounded-full bg-yellow-400"></span>
+                <span className="w-2.5 h-2.5 rounded-full bg-green-400"></span>
+              </div>
+            </div>
+            {/* Visual website mockup */}
+            <div className="flex-1 flex flex-col justify-center items-center py-6">
+              <div className="w-full max-w-[280px] bg-white rounded-xl border border-gray-200 shadow-lg p-4 relative overflow-hidden">
+                <div className="h-3 w-16 bg-gray-200 rounded mb-4"></div>
+                <div className="h-6 w-full bg-gradient-to-r from-primary to-orange-400 rounded mb-2"></div>
+                <div className="h-3 w-28 bg-gray-100 rounded mb-4"></div>
+                <div className="grid grid-cols-3 gap-2 mb-3">
+                  <div className="h-8 bg-orange-50 rounded border border-orange-100"></div>
+                  <div className="h-8 bg-orange-50 rounded border border-orange-100"></div>
+                  <div className="h-8 bg-orange-50 rounded border border-orange-100"></div>
+                </div>
+                <div className="w-full h-10 bg-primary/10 border border-primary/20 rounded-lg flex items-center justify-center">
+                  <span className="w-12 h-2.5 bg-primary/60 rounded"></span>
+                </div>
+              </div>
+            </div>
+            <div className="bg-emerald-50 border border-emerald-100 rounded-lg p-3 text-center">
+              <span className="text-xs font-mono font-bold text-emerald-600">⚡ Performance Score: 100/100 Mobile</span>
+            </div>
+          </div>
+        );
+      case 1:
+        return (
+          <div className="flex flex-col h-full justify-between p-5 text-zinc-800">
+            <div className="flex items-center justify-between border-b border-gray-100 pb-3">
+              <span className="text-xs font-mono font-bold text-gray-400">crm_payload_sync.json</span>
+              <span className="text-[10px] font-bold text-blue-500 bg-blue-50 border border-blue-100 px-2 py-0.5 rounded-full">Web Hook</span>
+            </div>
+            {/* Dynamic database connection flow */}
+            <div className="flex-1 flex flex-col justify-center items-center py-4">
+              <div className="w-full space-y-3 font-mono text-[11px] text-gray-600 bg-gray-50 rounded-xl p-4 border border-gray-100 shadow-inner overflow-hidden">
+                <p className="text-blue-500">{"{"}</p>
+                <p className="pl-4"><span className="text-purple-500">"event"</span>: "lead_captured",</p>
+                <p className="pl-4"><span className="text-purple-500">"source"</span>: "Kreo OS Engine",</p>
+                <p className="pl-4"><span className="text-purple-500">"data"</span>: {"{"}</p>
+                <p className="pl-8"><span className="text-purple-500">"name"</span>: "Rrayan",</p>
+                <p className="pl-8"><span className="text-purple-500">"status"</span>: <span className="text-emerald-600">"auto_qualified"</span></p>
+                <p className="pl-4">{"}"},</p>
+                <p className="pl-4 text-gray-400">// synced to CRM pipeline (0.12s)</p>
+                <p className="text-blue-500">{"}"}</p>
+              </div>
+            </div>
+            <div className="bg-blue-50 border border-blue-100 rounded-lg p-3 text-center">
+              <span className="text-xs font-mono font-bold text-blue-600">✓ Salesforce & HubSpot synced</span>
+            </div>
+          </div>
+        );
+      case 2:
+        return (
+          <div className="flex flex-col h-full justify-between p-5 text-zinc-800">
+            <div className="flex items-center justify-between border-b border-gray-100 pb-3">
+              <span className="text-xs font-mono font-bold text-gray-400">automation_node_tree.flow</span>
+              <span className="w-2 h-2 rounded-full bg-orange-400 animate-ping"></span>
+            </div>
+            {/* Nodes and steps map */}
+            <div className="flex-1 flex items-center justify-center py-6">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-xl bg-orange-50 border border-orange-200 flex items-center justify-center shadow-sm">
+                  <span className="material-symbols-outlined text-primary text-xl">mail</span>
+                </div>
+                <div className="w-8 h-0.5 bg-gradient-to-r from-primary/80 to-gray-300 relative">
+                  <div className="absolute top-1/2 left-0 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-primary animate-ping"></div>
+                </div>
+                <div className="w-12 h-12 rounded-xl bg-gray-50 border border-gray-200 flex items-center justify-center shadow-sm">
+                  <span className="material-symbols-outlined text-gray-400 text-xl">event_available</span>
+                </div>
+                <div className="w-8 h-0.5 bg-gray-200"></div>
+                <div className="w-12 h-12 rounded-xl bg-gray-50 border border-gray-200 flex items-center justify-center shadow-sm">
+                  <span className="material-symbols-outlined text-gray-400 text-xl">sms</span>
+                </div>
+              </div>
+            </div>
+            <div className="bg-orange-50 border border-orange-100 rounded-lg p-3 text-center">
+              <span className="text-xs font-mono font-bold text-orange-600">⚙ 3 triggers executed today</span>
+            </div>
+          </div>
+        );
+      case 3:
+        return (
+          <div className="flex flex-col h-full justify-between p-5 text-zinc-800">
+            <div className="flex items-center justify-between border-b border-gray-100 pb-3">
+              <span className="text-xs font-mono font-bold text-gray-400">analytics_report.log</span>
+              <span className="text-[10px] font-bold text-purple-600 bg-purple-50 border border-purple-100 px-2 py-0.5 rounded-full">Real-time</span>
+            </div>
+            {/* Analytics charts mockup */}
+            <div className="flex-1 flex flex-col justify-center py-4">
+              <div className="flex items-end justify-between px-4 h-24 gap-3">
+                <div className="w-full bg-purple-100 rounded-t-lg h-[40%]"></div>
+                <div className="w-full bg-purple-200 rounded-t-lg h-[60%]"></div>
+                <div className="w-full bg-purple-300 rounded-t-lg h-[80%]"></div>
+                <div className="w-full bg-gradient-to-t from-primary to-orange-400 rounded-t-lg h-[100%]"></div>
+              </div>
+            </div>
+            <div className="bg-purple-50 border border-purple-100 rounded-lg p-3 text-center">
+              <span className="text-xs font-mono font-bold text-purple-600">📈 Conversion Rate: +38.4%</span>
+            </div>
+          </div>
+        );
+      default:
+        return null;
+    }
+  };
 
-      <div className="mx-auto max-w-7xl px-5 md:px-12 lg:px-8 relative z-10">
+  return (
+    <section id="business" className="bg-[#FAF9F6] py-20 md:py-28 relative overflow-hidden border-t border-gray-100">
+      {/* Background blueprint elements */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none z-0"></div>
+      <div className="absolute -bottom-24 -left-24 w-[500px] h-[500px] bg-orange-400/5 rounded-full blur-3xl pointer-events-none z-0"></div>
+
+      <div className="relative max-w-7xl mx-auto px-5 md:px-12 lg:px-8 z-10">
+        
         {/* Header */}
-        <div className="mb-16 text-center fade-in-up">
+        <div className="mb-16 text-center max-w-3xl mx-auto fade-in-up">
           <div className="section-divider mx-auto"></div>
-          <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4 leading-tight">
             Want Our Full Service?<br />
-            <span className="text-primary">Introducing BusinessFlow OS</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-500">Introducing BusinessFlow OS</span>
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto leading-relaxed text-base">
-            Our proprietary operating system that connects every aspect of your digital presence
-            into a unified, intelligent machine.
+          <p className="text-gray-600 text-base md:text-lg leading-relaxed mt-4">
+            Our proprietary operating system that connects every aspect of your digital presence into a unified, intelligent machine.
           </p>
         </div>
 
-        {/* Desktop Flow */}
-        <div className="relative mt-12 hidden md:block">
-          {/* Connecting line */}
-          <div className="absolute top-[40px] left-0 w-full h-0.5 bg-gray-100 z-0"></div>
-          <div className="absolute top-[40px] left-0 w-full h-0.5 bg-gradient-to-r from-primary/0 via-primary/60 to-primary/0 z-0 opacity-50"></div>
-
-          <div className="grid grid-cols-4 gap-6 relative z-10">
+        {/* Console Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          {/* Left Block: Flow Controllers (7 Cols) */}
+          <div className="lg:col-span-7 flex flex-col gap-4">
             {steps.map((item, idx) => (
-              <div key={idx} className={`flex flex-col items-center fade-in-up delay-${(idx + 1) * 100}`}>
-                <div className="w-20 h-20 bg-white border-2 border-primary/30 rounded-full flex items-center justify-center shadow-md mb-6 relative group hover:border-primary hover:shadow-primary/20 hover:shadow-xl transition-all duration-300">
-                  <span className="material-symbols-outlined text-primary text-3xl">{item.icon}</span>
-                  <div className="absolute -bottom-3 bg-primary text-white text-[10px] font-black px-2.5 py-0.5 rounded-full tracking-widest">
-                    {item.step}
+              <div
+                key={idx}
+                onMouseEnter={() => setActiveStep(idx)}
+                onClick={() => setActiveStep(idx)}
+                className={`group flex items-start gap-4 p-5 rounded-2xl border cursor-pointer transition-all duration-300 ${
+                  activeStep === idx
+                    ? "bg-white border-primary shadow-[0_12px_30px_rgba(216,86,4,0.08)] scale-[1.01]"
+                    : "bg-white/50 border-gray-200 hover:bg-white hover:border-gray-300"
+                }`}
+              >
+                {/* Step badge */}
+                <div className={`shrink-0 w-12 h-12 rounded-xl flex items-center justify-center font-black text-base transition-all duration-300 ${
+                  activeStep === idx
+                    ? "bg-primary text-white"
+                    : "bg-gray-100 text-gray-500 group-hover:bg-gray-200"
+                }`}>
+                  {item.step}
+                </div>
+
+                <div className="flex-1">
+                  <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
+                    <h3 className="font-bold text-gray-900 text-lg">{item.title}</h3>
+                    {/* Status Badge */}
+                    <span className={`text-[9px] font-bold border px-2 py-0.5 rounded-full uppercase tracking-wider transition-all duration-300 ${
+                      activeStep === idx ? item.statusColor : "text-gray-400 bg-gray-50 border-gray-200"
+                    }`}>
+                      {item.status}
+                    </span>
+                  </div>
+                  <h4 className="text-xs font-semibold text-primary/80 mb-2">{item.tagline}</h4>
+                  <p className="text-sm text-gray-600 leading-relaxed">{item.description}</p>
+                  
+                  {/* Embedded Inline Simulator View for Mobile viewports */}
+                  <div className={`mt-4 border border-gray-100 rounded-xl bg-white/80 overflow-hidden shadow-inner lg:hidden transition-all duration-500 ${
+                    activeStep === idx ? "max-h-[300px] opacity-100 p-2" : "max-h-0 opacity-0 overflow-hidden"
+                  }`}>
+                    {activeStep === idx && renderSimulator()}
                   </div>
                 </div>
-                <h4 className="text-lg font-bold text-gray-900 mt-2">{item.title}</h4>
-                <p className="text-center text-sm text-gray-600 mt-2 px-2 leading-relaxed">
-                  {item.description}
-                </p>
               </div>
             ))}
           </div>
-        </div>
 
-        {/* Mobile list */}
-        <div className="flex flex-col gap-5 md:hidden">
-          {steps.map((item, idx) => (
-            <div
-              key={idx}
-              className="flex items-start gap-4 p-5 border border-gray-200 rounded-xl bg-gray-50 shadow-sm"
-            >
-              <div className="shrink-0 w-11 h-11 rounded-full bg-primary text-white flex items-center justify-center font-black text-sm">
-                {item.step}
-              </div>
-              <div>
-                <h4 className="font-bold text-gray-900">{item.title}</h4>
-                <p className="text-sm text-gray-600 mt-1 leading-relaxed">{item.description}</p>
+          {/* Right Block: Live Dashboard Console (5 Cols - Hidden on Mobile) */}
+          <div className="hidden lg:col-span-5 lg:block">
+            <div className="relative bg-white border border-gray-200 shadow-2xl rounded-2xl overflow-hidden aspect-[4/5] flex flex-col justify-between p-1">
+              
+              {/* Outer tech styling */}
+              <div className="absolute top-2 left-2 w-3 h-3 bg-gray-200 rounded-full"></div>
+              <div className="absolute top-2 right-2 w-3 h-3 bg-gray-200 rounded-full"></div>
+              
+              {/* Terminal Screen Container */}
+              <div className="flex-1 bg-white/70 backdrop-blur-md rounded-xl overflow-hidden">
+                {renderSimulator()}
               </div>
             </div>
-          ))}
+          </div>
+
         </div>
+
       </div>
     </section>
   );
