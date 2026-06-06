@@ -58,23 +58,38 @@ export default function ContactForm() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate submission request delay
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSuccess(true);
-      // Reset form
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        service: "Web Development",
-        message: "",
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       });
-    }, 1500);
+
+      const data = await res.json();
+
+      if (res.ok) {
+        setIsSuccess(true);
+        // Reset form inputs
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          service: "Web Development",
+          message: "",
+        });
+      } else {
+        alert(data.error || "An error occurred. Please try again.");
+      }
+    } catch (err) {
+      console.error("Failed to submit requirements:", err);
+      alert("Unable to connect to the server. Please check your network connection.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
