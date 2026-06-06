@@ -307,6 +307,12 @@ h1, h2, h3, h4, h5, h6 {
     min-height: 80vh;
     min-height: 80dvh;
   }
+
+  /* Portrait video fills taller mobile viewport correctly */
+  .hero-video-bg {
+    object-position: center top;
+  }
+
   .hero-video-overlay {
     background: linear-gradient(
       135deg,
