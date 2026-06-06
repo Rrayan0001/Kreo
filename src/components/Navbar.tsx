@@ -76,9 +76,7 @@ export default function Navbar() {
               </a>
             </nav>
             <a
-              href={startProjectUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#contact-form"
               className={`text-sm font-bold h-10 px-6 rounded-lg flex items-center transition-all duration-300 ${
                 scrolled
                   ? "bg-primary text-white shadow-lg shadow-primary/25 hover:bg-primary-hover"
@@ -129,9 +127,7 @@ export default function Navbar() {
               Contact Us
             </a>
             <a
-              href={startProjectUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#contact-form"
               onClick={() => setMobileMenuOpen(false)}
               className="bg-primary text-white h-12 px-6 rounded-lg inline-flex items-center justify-center w-full mt-6 font-bold"
             >
