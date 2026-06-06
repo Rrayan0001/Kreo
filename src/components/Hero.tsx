@@ -47,7 +47,7 @@ export default function Hero() {
           Desktop: text pinned to bottom-left (justify-end items-start text-left) so video is clear
           Mobile:  text pinned to bottom-center (justify-end items-center text-center)
         */}
-        <div className="relative z-10 w-full h-full flex flex-col items-center md:items-start justify-end text-center md:text-left px-5 sm:px-8 md:px-20 lg:px-24 pb-12 md:pb-24">
+        <div className="absolute inset-0 z-10 flex flex-col items-center md:items-start justify-end text-center md:text-left px-5 sm:px-8 md:px-20 lg:px-24 pb-8 md:pb-14">
           <p className="fade-in text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] sm:tracking-[0.3em] text-orange-300 mb-3 sm:mb-6 px-2 md:px-0">
             Engineering Digital Transformation
           </p>
