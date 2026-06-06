@@ -287,6 +287,18 @@ h1, h2, h3, h4, h5, h6 {
   object-fit: cover;
   object-position: center;
   z-index: 0;
+  pointer-events: none; /* Prevents clicks/taps on mobile from showing native media controls */
+}
+
+/* Hide standard native controls and play overlays in WebKit browsers */
+.hero-video-bg::-webkit-media-controls {
+  display: none !important;
+}
+.hero-video-bg::-webkit-media-controls-overlay-play-button {
+  display: none !important;
+}
+.hero-video-bg::-webkit-media-controls-start-playback-button {
+  display: none !important;
 }
 
 .hero-video-overlay {

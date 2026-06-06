@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 
 export default function Hero() {
@@ -8,6 +8,7 @@ export default function Hero() {
   // We initialize with a default (e.g. empty) to prevent hydration mismatches,
   // then resolve immediately on mount.
   const [videoSrc, setVideoSrc] = useState<string>("");
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const checkResponsiveSrc = () => {
@@ -22,6 +23,15 @@ export default function Hero() {
     window.addEventListener("resize", checkResponsiveSrc);
     return () => window.removeEventListener("resize", checkResponsiveSrc);
   }, []);
+
+  // Force play the video explicitly when source changes to prevent mobile browser load blocks
+  useEffect(() => {
+    if (videoRef.current && videoSrc) {
+      videoRef.current.play().catch((err) => {
+        console.warn("Autoplay was prevented or postponed:", err);
+      });
+    }
+  }, [videoSrc]);
 
   return (
     <>
@@ -44,6 +54,7 @@ export default function Hero() {
         {/* Background Video */}
         {videoSrc && (
           <video
+            ref={videoRef}
             key={videoSrc} // key forces DOM element recreation on src switch
             className="hero-video-bg"
             autoPlay
