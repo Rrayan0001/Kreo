@@ -2,7 +2,12 @@
 
 import React, { useState } from "react";
 
+// EDIT THIS URL TO INTEGRATE YOUR OWN CALENDLY SCHEDULE PAGE
+const CALENDLY_URL = "https://calendly.com/kreo_pvt_ltd";
+
 export default function ContactForm() {
+  const [activeContactMethod, setActiveContactMethod] = useState<"calendly" | "form">("calendly");
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -42,6 +47,7 @@ export default function ContactForm() {
     <section id="contact-form" className="py-16 md:py-24 px-5 md:px-12 lg:px-20 bg-gray-50 border-t border-gray-100">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          
           {/* Left Side: Contact Information Cards */}
           <div className="lg:col-span-5 space-y-6 fade-in-up">
             <div>
@@ -50,7 +56,7 @@ export default function ContactForm() {
                 Let's Build Something Great Together
               </h2>
               <p className="text-base text-gray-600 leading-relaxed max-w-md">
-                Fill out the form to request custom specifications, project quotes, or professional IT consulting. Our engineers will reply within 24 hours.
+                Choose a method below to connect with us. You can schedule an instant live discovery session or submit custom specs.
               </p>
             </div>
 
@@ -90,10 +96,51 @@ export default function ContactForm() {
             </div>
           </div>
 
-          {/* Right Side: Form Panel */}
-          <div className="lg:col-span-7 bg-white border border-gray-200/70 rounded-2xl p-6 md:p-8 shadow-md relative overflow-hidden fade-in-up delay-100">
-            {isSuccess ? (
-              /* Success Screen */
+          {/* Right Side: Interactive Scheduling & Form Panel */}
+          <div className="lg:col-span-7 bg-white border border-gray-200/70 rounded-2xl p-4 sm:p-6 md:p-8 shadow-md relative overflow-hidden fade-in-up delay-100">
+            
+            {/* Toggle tabs for booking method */}
+            <div className="flex gap-2 p-1 bg-gray-50 border border-gray-200/60 rounded-xl mb-6">
+              <button
+                type="button"
+                onClick={() => setActiveContactMethod("calendly")}
+                className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-lg text-xs sm:text-sm font-bold transition-all duration-200 ${
+                  activeContactMethod === "calendly"
+                    ? "bg-white text-primary shadow-sm border border-gray-100"
+                    : "text-gray-500 hover:text-gray-800"
+                }`}
+              >
+                <span className="material-symbols-outlined text-[18px]">calendar_month</span>
+                Book Discovery Call
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveContactMethod("form")}
+                className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-lg text-xs sm:text-sm font-bold transition-all duration-200 ${
+                  activeContactMethod === "form"
+                    ? "bg-white text-primary shadow-sm border border-gray-100"
+                    : "text-gray-500 hover:text-gray-800"
+                }`}
+              >
+                <span className="material-symbols-outlined text-[18px]">edit_note</span>
+                Send Requirements
+              </button>
+            </div>
+
+            {/* Conditionally render selected method */}
+            {activeContactMethod === "calendly" ? (
+              /* Calendly Inline Widget Embed */
+              <div className="relative w-full h-[550px] border border-gray-100 rounded-xl overflow-hidden shadow-inner bg-gray-50">
+                <iframe
+                  src={`${CALENDLY_URL}?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=d85604`}
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  title="Schedule a consultation with Kreo Softwares"
+                ></iframe>
+              </div>
+            ) : isSuccess ? (
+              /* Success Screen for Manual Form */
               <div className="py-12 flex flex-col items-center justify-center text-center space-y-4">
                 <div className="w-16 h-16 rounded-full bg-green-50 border border-green-200 flex items-center justify-center text-green-500 shadow-sm animate-float">
                   <span className="material-symbols-outlined text-4xl">check_circle</span>
@@ -103,6 +150,7 @@ export default function ContactForm() {
                   Thank you for sharing your requirements. One of our lead software engineers will review your request and get in touch with you shortly.
                 </p>
                 <button
+                  type="button"
                   onClick={() => setIsSuccess(false)}
                   className="text-xs font-bold text-primary hover:text-primary-hover flex items-center gap-1 mt-4 underline cursor-pointer"
                 >
@@ -111,7 +159,7 @@ export default function ContactForm() {
                 </button>
               </div>
             ) : (
-              /* Form Layout */
+              /* Requirements Form Layout */
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   {/* Full Name */}
@@ -233,6 +281,7 @@ export default function ContactForm() {
               </form>
             )}
           </div>
+
         </div>
       </div>
     </section>
