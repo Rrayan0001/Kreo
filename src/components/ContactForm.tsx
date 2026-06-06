@@ -3,7 +3,7 @@
 import React, { useEffect } from "react";
 
 // EDIT THIS URL TO INTEGRATE YOUR OWN CALENDLY SCHEDULE PAGE
-const CALENDLY_URL = "https://calendly.com/kreo-pvt-ltd";
+const CALENDLY_URL = "https://calendly.com/kreo-pvt-ltd/30min";
 
 export default function ContactForm() {
   // Catch booking completion event from the Calendly iframe
