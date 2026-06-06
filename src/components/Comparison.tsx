@@ -49,38 +49,41 @@ export default function Comparison() {
 
         {/* Desktop Table View */}
         <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm hidden md:block scale-in">
-          {/* Header */}
-          <div className="grid grid-cols-3 bg-gray-50 p-6 border-b border-gray-200">
-            <div className="col-span-1 text-sm font-semibold text-gray-500 uppercase tracking-wider pt-2">
-              Features
+          {/* Orange column highlight — spans full height behind the last column */}
+          <div className="comparison-table">
+            {/* Header Row */}
+            <div className="comparison-header">
+              <div className="comparison-col-feature text-sm font-semibold text-gray-500 uppercase tracking-wider">
+                Features
+              </div>
+              <div className="comparison-col-others text-center font-bold text-lg text-gray-400">
+                Others / Freelancers
+              </div>
+              {/* KreoSoftwares header — the orange panel is a sibling pseudo-layer */}
+              <div className="comparison-col-kreo-header">
+                <span>KreoSoftwares</span>
+              </div>
             </div>
-            <div className="col-span-1 text-center font-bold text-lg text-gray-400">
-              Others / Freelancers
-            </div>
-            <div className="col-span-1 text-center font-black text-xl text-primary bg-primary/5 rounded-t-xl -mb-6 pb-6 pt-2 border-t-2 border-x border-primary/25 relative top-[-1px]">
-              KreoSoftwares
-            </div>
-          </div>
 
-          {comparisonRows.map((row, index) => (
-            <div
-              key={index}
-              className={`grid grid-cols-3 px-6 py-5 border-b border-gray-100 hover:bg-orange-50/40 transition-colors ${
-                index === comparisonRows.length - 1 ? "border-b-0" : ""
-              }`}
-            >
-              <div className="col-span-1 font-bold text-gray-900 flex items-center gap-3">
-                <span className="material-symbols-outlined text-primary/60">{row.icon}</span>
-                {row.title}
+            {/* Data Rows */}
+            {comparisonRows.map((row, index) => (
+              <div
+                key={index}
+                className={`comparison-row${index === comparisonRows.length - 1 ? " comparison-row-last" : ""}`}
+              >
+                <div className="comparison-col-feature font-bold text-gray-900 flex items-center gap-3">
+                  <span className="material-symbols-outlined text-primary/60">{row.icon}</span>
+                  {row.title}
+                </div>
+                <div className="comparison-col-others flex items-center justify-center">
+                  {row.others}
+                </div>
+                <div className="comparison-col-kreo flex items-center justify-center">
+                  {row.kreo}
+                </div>
               </div>
-              <div className="col-span-1 flex items-center justify-center">
-                {row.others}
-              </div>
-              <div className="col-span-1 flex items-center justify-center bg-primary/5 -my-5 py-5 border-x border-primary/20">
-                {row.kreo}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         {/* Mobile Cards View */}

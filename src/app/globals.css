@@ -354,3 +354,105 @@ h1, h2, h3, h4, h5, h6 {
 .btn-primary:hover::after {
   transform: translateX(100%);
 }
+
+/* ========== COMPARISON TABLE ========== */
+
+/*
+  Layout: 3-column grid where col 3 (KreoSoftwares) has an orange highlight.
+  We avoid negative margins/absolute hacks so the scale-in animation never
+  misaligns the orange panel.
+*/
+
+.comparison-table {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Header row */
+.comparison-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 0;
+}
+
+.comparison-col-feature {
+  padding: 1.5rem 1.5rem;
+}
+
+.comparison-col-others {
+  padding: 1.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* KreoSoftwares header cell — orange panel with rounded top */
+.comparison-col-kreo-header {
+  padding: 1rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(216, 86, 4, 0.06);
+  border-top: 2px solid rgba(216, 86, 4, 0.4);
+  border-left: 1px solid rgba(216, 86, 4, 0.2);
+  border-right: 1px solid rgba(216, 86, 4, 0.2);
+  border-radius: 12px 12px 0 0;
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: #D85604;
+  /* Extend slightly downward so border flows into body cells */
+  margin-bottom: -1px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Data rows */
+.comparison-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border-bottom: 1px solid #f3f4f6;
+  transition: background 0.2s ease;
+}
+
+.comparison-row:hover .comparison-col-feature,
+.comparison-row:hover .comparison-col-others {
+  background: rgba(251, 146, 60, 0.04);
+}
+
+.comparison-row-last {
+  border-bottom: none;
+}
+
+/* Row — feature and others cells */
+.comparison-row .comparison-col-feature {
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.comparison-row .comparison-col-others {
+  padding: 1.25rem 1rem;
+}
+
+/* KreoSoftwares data cell — matches the orange panel from the header */
+.comparison-col-kreo {
+  padding: 1.25rem 1rem;
+  background: rgba(216, 86, 4, 0.05);
+  border-left: 1px solid rgba(216, 86, 4, 0.2);
+  border-right: 1px solid rgba(216, 86, 4, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Last row — round the bottom of the orange panel */
+.comparison-row-last .comparison-col-kreo {
+  border-bottom: 1px solid rgba(216, 86, 4, 0.2);
+  border-radius: 0 0 12px 12px;
+}
+
