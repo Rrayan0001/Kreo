@@ -66,6 +66,14 @@ export default function Navbar() {
               >
                 Insights
               </a>
+              <a
+                href="#contact-form"
+                className={`text-sm font-medium transition-colors duration-300 ${
+                  scrolled ? "text-gray-600 hover:text-primary" : "text-white/80 hover:text-white"
+                }`}
+              >
+                Contact Us
+              </a>
             </nav>
             <a
               href={startProjectUrl}
@@ -116,6 +124,9 @@ export default function Navbar() {
             </a>
             <a href="#insight" onClick={() => setMobileMenuOpen(false)} className="font-medium text-gray-800 hover:text-primary py-3.5 border-b border-gray-100 flex items-center">
               Insights
+            </a>
+            <a href="#contact-form" onClick={() => setMobileMenuOpen(false)} className="font-medium text-gray-800 hover:text-primary py-3.5 border-b border-gray-100 flex items-center">
+              Contact Us
             </a>
             <a
               href={startProjectUrl}
