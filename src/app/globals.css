@@ -1,0 +1,337 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary: #D85604;
+  --color-primary-hover: #AD1B02;
+  --color-accent-yellow: #F3BE26;
+  --color-accent-pink: #E669A2;
+  --color-background-light: #f9f9f9;
+  --color-background-dark: #0f0f0f;
+  --color-platinum: #E0E0E0;
+  --color-charcoal: #1C1C1C;
+  --color-blueprint-grid: #f0f0f0;
+
+  --font-display: var(--font-inter), sans-serif;
+
+  --radius-default: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-full: 9999px;
+
+  --background-image-grid-pattern: linear-gradient(to right, #ebebeb 1px, transparent 1px), linear-gradient(to bottom, #ebebeb 1px, transparent 1px);
+}
+
+/* Base style overrides to match PwC editorial typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* ========== ANIMATIONS ========== */
+
+/* Fade up */
+.fade-in-up {
+  animation: fadeInUp 0.7s ease-out forwards;
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade in */
+.fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* Slide in from left */
+.slide-in-left {
+  animation: slideInLeft 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  opacity: 0;
+  transform: translateX(-40px);
+}
+
+@keyframes slideInLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Scale in */
+.scale-in {
+  animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  opacity: 0;
+  transform: scale(0.85);
+}
+
+@keyframes scaleIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Floating pulse for badges */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Pulse glow for primary indicators */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(216, 86, 4, 0.3); }
+  50% { box-shadow: 0 0 0 8px rgba(216, 86, 4, 0); }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Shimmer effect for loading/highlight states */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(216, 86, 4, 0.1), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2.5s infinite;
+}
+
+/* Count up number animation */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Video hero overlay pulse */
+@keyframes overlayPulse {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 0.45; }
+}
+
+/* Card hover lift */
+.card-hover {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -10px rgba(216, 86, 4, 0.15);
+}
+
+/* ========== MSME BANNER ========== */
+.msme-banner {
+  position: fixed;
+  top: 7rem;
+  right: 1rem;
+  z-index: 40;
+  width: 180px;
+  height: 92px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  background: rgba(255, 255, 255, 0.97);
+  border: 1px solid rgba(216, 86, 4, 0.12);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(16, 24, 40, 0.12);
+  backdrop-filter: blur(8px);
+  animation: float 4s ease-in-out infinite;
+}
+
+.msme-banner img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .msme-banner {
+    width: 110px;
+    height: 60px;
+    top: auto;
+    bottom: 0.75rem;
+    right: 0.75rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .msme-banner { display: none; }
+}
+
+/* ========== TICKER MARQUEE ========== */
+.ticker {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.ticker-track {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  white-space: nowrap;
+  will-change: transform;
+  animation: marquee 25s linear infinite;
+}
+
+.ticker-track-reverse {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  white-space: nowrap;
+  will-change: transform;
+  animation: marqueeReverse 30s linear infinite;
+}
+
+.ticker-group {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+}
+
+.ticker-track > *,
+.ticker-track-reverse > * {
+  flex-shrink: 0;
+}
+
+.ticker:hover .ticker-track,
+.ticker:hover .ticker-track-reverse {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes marqueeReverse {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+@media (max-width: 640px) {
+  .ticker-track, .ticker-track-reverse {
+    gap: 1.5rem;
+    animation-duration: 12s;
+  }
+}
+
+/* ========== BLUEPRINT GRID ========== */
+.blueprint-grid-bg {
+  background-size: 40px 40px;
+}
+
+/* ========== GLASS NAV ========== */
+.glass-nav {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(216, 86, 4, 0.08);
+  box-shadow: 0 1px 12px rgba(0,0,0,0.05);
+}
+
+/* ========== CARDS ========== */
+.tech-bg-pattern {
+  background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+  background-size: 10px 10px;
+  opacity: 0.4;
+}
+
+/* ========== HERO VIDEO ========== */
+.hero-video-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero-video-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(10, 10, 10, 0.72) 0%,
+    rgba(216, 86, 4, 0.18) 60%,
+    rgba(10, 10, 10, 0.60) 100%
+  );
+  z-index: 1;
+  animation: overlayPulse 6s ease-in-out infinite;
+}
+
+/* ========== STATS COUNTER ========== */
+.stat-number {
+  font-family: Georgia, Cambria, serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #D85604;
+  line-height: 1;
+}
+
+/* ========== SECTION DIVIDER ========== */
+.section-divider {
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #D85604, #F3BE26);
+  border-radius: 2px;
+  margin-bottom: 1.5rem;
+}
+
+/* ========== CTA BUTTON ANIMATIONS ========== */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+.btn-primary:hover::after {
+  transform: translateX(100%);
+}
