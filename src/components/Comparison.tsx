@@ -83,27 +83,27 @@ export default function Comparison() {
         <div className="mb-16 text-center max-w-3xl mx-auto">
           <div className="w-12 h-1 bg-primary rounded-full mx-auto mb-6"></div>
           <h2 className="text-4xl md:text-5xl font-black text-white leading-tight">
-            Traditional vs. <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-400">Kreo OS</span>
+            Traditional vs. <span className="text-primary">Kreo OS</span>
           </h2>
           <p className="text-zinc-400 mt-4 text-base md:text-lg leading-relaxed">
             See how our advanced engineering ecosystem outperforms legacy development timelines, fragmentations, and support models.
           </p>
         </div>
 
-        {/* Dynamic Selector Buttons (Horizontal Scroll on Mobile) */}
-        <div className="flex md:grid md:grid-cols-4 gap-3 overflow-x-auto pb-4 md:pb-0 scrollbar-none mb-10 border-b border-zinc-800/60 md:border-none">
+        {/* Dynamic Selector Buttons (Static 2x2 Grid on Mobile, 4 columns on Desktop) */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10 border-b border-zinc-800/60 md:border-none">
           {comparisons.map((item, idx) => (
             <button
               key={idx}
               onClick={() => setActiveTab(idx)}
-              className={`flex-shrink-0 md:w-full flex items-center justify-center gap-3 px-5 py-4 rounded-xl border transition-all duration-300 ${
+              className={`flex items-center justify-center gap-3 px-4 py-3.5 rounded-xl border transition-all duration-300 ${
                 activeTab === idx
-                  ? "bg-primary/10 border-primary text-white shadow-[0_0_20px_rgba(216,86,4,0.15)]"
+                  ? "bg-zinc-800/60 border-primary/60 text-white shadow-sm"
                   : "bg-zinc-900/40 border-zinc-800/80 text-zinc-400 hover:bg-zinc-900/80 hover:text-white"
               }`}
             >
-              <span className="material-symbols-outlined text-[20px]">{item.icon}</span>
-              <span className="font-bold text-sm tracking-wide">{item.title}</span>
+              <span className="material-symbols-outlined text-[18px]">{item.icon}</span>
+              <span className="font-bold text-xs sm:text-sm tracking-wide">{item.title}</span>
             </button>
           ))}
         </div>
@@ -116,8 +116,8 @@ export default function Comparison() {
             <div>
               <div className="flex justify-between items-center mb-6">
                 <span className="text-xs font-bold uppercase tracking-wider text-zinc-500">Legacy Route</span>
-                <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-950/20 border border-red-900/30 text-red-400 text-xs font-semibold">
-                  <span className="material-symbols-outlined text-[14px]">cancel</span>
+                <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-800/60 border border-zinc-700/50 text-zinc-400 text-xs font-semibold">
+                  <span className="material-symbols-outlined text-[14px] text-zinc-500">cancel</span>
                   Freelancers & Agencies
                 </span>
               </div>
@@ -146,15 +146,15 @@ export default function Comparison() {
           </div>
 
           {/* Card 2: Kreo OS Route (Glowing Premium Neon Card) */}
-          <div className="relative flex flex-col justify-between bg-orange-950/5 border-2 border-primary/40 shadow-[0_0_50px_rgba(216,86,4,0.06)] rounded-2xl p-6 md:p-8 backdrop-blur-md overflow-hidden transition-all duration-300 hover:border-primary/60 hover:shadow-[0_0_60px_rgba(216,86,4,0.12)]">
+          <div className="relative flex flex-col justify-between bg-orange-950/5 border border-primary/30 rounded-2xl p-6 md:p-8 backdrop-blur-md overflow-hidden transition-all duration-300 hover:border-primary/50">
             
             {/* Corner Light Glow */}
-            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 rounded-full blur-[40px] pointer-events-none" />
+            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-[50px] pointer-events-none" />
 
             <div>
               <div className="flex justify-between items-center mb-6">
                 <span className="text-xs font-bold uppercase tracking-wider text-primary">High-Speed Execution</span>
-                <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/20 border border-primary/30 text-orange-300 text-xs font-semibold animate-pulse-glow">
+                <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 border border-primary/25 text-primary text-xs font-semibold">
                   <span className="material-symbols-outlined text-[14px]">verified</span>
                   KreoSoftwares
                 </span>
@@ -171,12 +171,12 @@ export default function Comparison() {
             {/* Metric Panel */}
             <div className="bg-primary/5 border border-primary/10 rounded-xl p-5 mt-auto">
               <div className="flex justify-between items-center mb-2">
-                <span className="text-xs text-orange-400/80 font-medium">Performance Delivery</span>
+                <span className="text-xs text-zinc-400 font-medium">Performance Delivery</span>
                 <span className="text-xs font-bold text-white tracking-wide">{comparisons[activeTab].kreoMetric}</span>
               </div>
               <div className="w-full bg-zinc-800 h-2.5 rounded-full overflow-hidden">
                 <div 
-                  className="bg-gradient-to-r from-primary to-orange-400 h-full rounded-full transition-all duration-700 ease-out"
+                  className="bg-primary h-full rounded-full transition-all duration-700 ease-out"
                   style={{ width: `${comparisons[activeTab].kreoVal}%` }}
                 />
               </div>
