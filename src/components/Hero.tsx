@@ -1,9 +1,28 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
 export default function Hero() {
+  // Use client-side detection to determine which video to render.
+  // We initialize with a default (e.g. empty) to prevent hydration mismatches,
+  // then resolve immediately on mount.
+  const [videoSrc, setVideoSrc] = useState<string>("");
+
+  useEffect(() => {
+    const checkResponsiveSrc = () => {
+      const isMobile = window.innerWidth <= 767;
+      setVideoSrc(isMobile ? "/Portrait.mp4" : "/hero-video.mp4");
+    };
+
+    // Run on mount
+    checkResponsiveSrc();
+
+    // Listen to resize in case orientation changes
+    window.addEventListener("resize", checkResponsiveSrc);
+    return () => window.removeEventListener("resize", checkResponsiveSrc);
+  }, []);
+
   return (
     <>
       {/* MSME Floating Banner */}
@@ -23,19 +42,19 @@ export default function Hero() {
       {/* Full-bleed video hero */}
       <section className="hero-video-section">
         {/* Background Video */}
-        <video
-          className="hero-video-bg"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-        >
-          {/* Portrait video for mobile screens */}
-          <source src="/Portrait.mp4" type="video/mp4" media="(max-width: 767px)" />
-          {/* Landscape video for tablet/desktop */}
-          <source src="/hero-video.mp4" type="video/mp4" />
-        </video>
+        {videoSrc && (
+          <video
+            key={videoSrc} // key forces DOM element recreation on src switch
+            className="hero-video-bg"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+          >
+            <source src={videoSrc} type="video/mp4" />
+          </video>
+        )}
 
         {/* Dark Overlay — lighter on mobile so video shows through more */}
         <div className="hero-video-overlay" />
