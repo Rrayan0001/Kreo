@@ -102,7 +102,7 @@ export default function ContactForm() {
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
-                title="Schedule a consultation with Kreo Softwares"
+                title="Schedule a consultation with Kreo"
               ></iframe>
             </div>
           </div>

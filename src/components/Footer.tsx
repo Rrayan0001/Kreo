@@ -15,20 +15,29 @@ export default function Footer() {
               <div className="relative w-11 h-11 overflow-hidden rounded-lg bg-white/10 border border-white/10">
                 <Image
                   src="/logo.jpeg"
-                  alt="Kreo Softwares logo"
+                  alt="Kreo logo"
                   fill
                   className="object-contain"
                   sizes="44px"
                 />
               </div>
               <span className="font-display text-2xl font-bold text-white">
-                Kreo Softwares
+                Kreo
               </span>
             </div>
-            <p className="mb-8 max-w-md text-gray-400 leading-relaxed">
+            <p className="mb-6 max-w-md text-gray-400 leading-relaxed">
               Your trusted technology partner for scalable software solutions, digital transformation,
               and innovative IT services across India.
             </p>
+            <a
+              href="https://www.google.com/search?client=ms-android-samsung-rvo1&hs=si1p&sca_esv=ff2d4d56d9128a28&cs=1&hl=en-IN&output=search&kgmid=/g/11yyz9nhgk&q=Kreo+softwares&shem=epsd1,rimspwouoe&shndl=30&source=sh/x/loc/act/m1/4&kgs=853100add55fd715&utm_source=epsd1,rimspwouoe,sh/x/loc/act/m1/4#lrd=0x3bb8cd795af6a8af:0xcb9a937f06ee47ba,3,,,,"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-primary hover:text-white bg-primary/10 border border-primary/20 hover:bg-primary px-4 py-2.5 rounded-lg transition-all duration-300 mb-8 shadow-sm shadow-primary/5 select-none"
+            >
+              <span className="material-symbols-outlined text-[16px]">grade</span>
+              Review Us on Google
+            </a>
 
             <div className="space-y-5">
               <div className="flex items-start gap-4">
@@ -92,7 +101,7 @@ export default function Footer() {
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Kreo Softwares Location Map"
+              title="Kreo Location Map"
             ></iframe>
           </div>
         </div>
@@ -103,10 +112,10 @@ export default function Footer() {
             <div className="relative w-6 h-6 overflow-hidden rounded">
               <Image src="/logo.jpeg" alt="Logo" fill className="object-contain" sizes="24px" />
             </div>
-            <span className="text-sm font-bold text-white">Kreo Softwares</span>
+            <span className="text-sm font-bold text-white">Kreo</span>
           </div>
           <div className="text-sm text-gray-500">
-            © 2026 Kreo Softwares. All rights reserved.
+            © 2026 Kreo. All rights reserved.
           </div>
           <div className="flex gap-5">
             <a

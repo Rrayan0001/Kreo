@@ -9,9 +9,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Software Development Company in Hubli–Dharwad | Kreosoftwares – Web, App & IT Solutions",
-  description: "Kreosoftwares is a leading software development company in Hubli–Dharwad, Karnataka. We specialize in website development, web applications, mobile apps, internships, academic projects, enterprise software, and IT solutions across India.",
-  keywords: "software company in hubli, software company in dharwad, hubli dharwad software development, best software company hubli, web development hubli, website development dharwad, software services karnataka, mobile app development hubli, internship projects hubli dharwad, academic projects hubli, final year projects hubli, software training hubli, it company hubli dharwad, startup software partner karnataka, custom software india, kreosoftwares hubli, kreosoftwares dharwad",
+  title: "Software Development Company in Hubli–Dharwad | Kreo – Web, App & IT Solutions",
+  description: "Kreo is a leading software development company in Hubli–Dharwad, Karnataka. We specialize in website development, web applications, mobile apps, internships, academic projects, enterprise software, and IT solutions across India.",
+  keywords: "software company in hubli, software company in dharwad, hubli dharwad software development, best software company hubli, web development hubli, website development dharwad, software services karnataka, mobile app development hubli, internship projects hubli dharwad, academic projects hubli, final year projects hubli, software training hubli, it company hubli dharwad, startup software partner karnataka, custom software india, kreo hubli, kreo dharwad",
   icons: {
     icon: [
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
@@ -28,10 +28,10 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    title: "Kreosoftwares – Software Development Company in Hubli–Dharwad",
+    title: "Kreo – Software Development Company in Hubli–Dharwad",
     description: "Web development, mobile apps, internships, academic projects, and IT services in Hubli–Dharwad and across India.",
     url: "https://www.kreosoftwares.in/",
-    siteName: "Kreosoftwares",
+    siteName: "Kreo",
     images: [
       {
         url: "https://www.kreosoftwares.in/logo.png",
@@ -40,12 +40,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kreosoftwares | Software Company in Hubli–Dharwad",
+    title: "Kreo | Software Company in Hubli–Dharwad",
     description: "Custom software, websites, apps, internships & academic projects in Karnataka, India.",
     images: ["https://www.kreosoftwares.in/logo.png"],
   },
-  authors: [{ name: "Kreosoftwares" }],
-  publisher: "Kreosoftwares",
+  authors: [{ name: "Kreo" }],
+  publisher: "Kreo",
   other: {
     "geo.region": "IN-KA",
     "geo.placename": "Hubli-Dharwad",
@@ -62,7 +62,7 @@ export default function RootLayout({
   const schemaMarkup = {
     "@context": "https://schema.org",
     "@type": "SoftwareCompany",
-    "name": "Kreosoftwares",
+    "name": "Kreo",
     "url": "https://www.kreosoftwares.in/",
     "logo": "https://www.kreosoftwares.in/logo.png",
     "image": "https://www.kreosoftwares.in/logo.png",

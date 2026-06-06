@@ -17,7 +17,7 @@ export default function Chatbot() {
     {
       id: "welcome",
       sender: "bot",
-      text: "Hello! Welcome to Kreo Softwares. I am your virtual assistant. How can I help you today?",
+      text: "Hello! Welcome to Kreo. I am your virtual assistant. How can I help you today?",
     },
   ]);
   const [inputText, setInputText] = useState("");

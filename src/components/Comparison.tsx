@@ -171,7 +171,7 @@ export default function Comparison() {
                   <span className="text-xs font-bold uppercase tracking-wider text-primary">High-Speed Execution</span>
                   <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 border border-primary/25 text-primary text-xs font-semibold">
                     <span className="material-symbols-outlined text-[14px]">verified</span>
-                    KreoSoftwares
+                    Kreo
                   </span>
                 </div>
 
@@ -258,7 +258,7 @@ export default function Comparison() {
                   <span className="text-[10px] font-bold uppercase tracking-wider text-primary">Kreo Execution</span>
                   <span className="flex items-center gap-1 text-[10px] text-primary font-semibold bg-primary/10 border border-primary/20 px-2 py-0.5 rounded-full">
                     <span className="material-symbols-outlined text-[12px]">check</span>
-                    KreoSoftwares
+                    Kreo
                   </span>
                 </div>
                 <h3 className="text-lg font-bold text-white mb-1.5">

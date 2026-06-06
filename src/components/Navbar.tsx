@@ -38,13 +38,13 @@ export default function Navbar() {
             <div className="relative w-11 h-11 flex items-center justify-center rounded-lg bg-white/15 overflow-hidden border border-white/20">
               <Image
                 src="/logo.jpeg"
-                alt="Kreo Softwares logo"
+                alt="Kreo logo"
                 fill
                 className="object-contain"
                 sizes="44px"
               />
             </div>
-            <span className="text-xl font-bold tracking-tight">Kreo Softwares</span>
+            <span className="text-xl font-bold tracking-tight">Kreo</span>
           </div>
 
           {/* Desktop Nav */}
@@ -106,7 +106,7 @@ export default function Navbar() {
               <div className="relative w-10 h-10 overflow-hidden rounded-lg">
                 <Image src="/logo.jpeg" alt="Kreo logo" fill className="object-contain" sizes="40px" />
               </div>
-              <span className="font-bold text-lg text-gray-900">Kreo Softwares</span>
+              <span className="font-bold text-lg text-gray-900">Kreo</span>
             </div>
             <button
               onClick={() => setMobileMenuOpen(false)}
