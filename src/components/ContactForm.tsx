@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 
 // EDIT THIS URL TO INTEGRATE YOUR OWN CALENDLY SCHEDULE PAGE
-const CALENDLY_URL = "https://calendly.com/kreo_pvt_ltd";
+const CALENDLY_URL = "https://calendly.com/kreo-pvt-ltd";
 
 export default function ContactForm() {
   const [activeContactMethod, setActiveContactMethod] = useState<"calendly" | "form">("calendly");
