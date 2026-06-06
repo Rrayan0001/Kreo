@@ -15,7 +15,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 
 export default function Home() {
   return (
-    <div className="relative flex min-h-screen w-full flex-col">
+    <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden">
       {/* Navigation */}
       <Navbar />
 

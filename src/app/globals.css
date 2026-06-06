@@ -2,6 +2,12 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 @theme {
   --color-primary: #D85604;
   --color-primary-hover: #AD1B02;
