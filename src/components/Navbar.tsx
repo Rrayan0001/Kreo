@@ -34,7 +34,10 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 flex items-center justify-between">
           {/* Logo */}
-          <div className={`flex items-center gap-3 transition-colors duration-300 ${scrolled ? "text-primary" : "text-white"}`}>
+          <a
+            href="#hero"
+            className={`flex items-center gap-3 transition-colors duration-300 ${scrolled ? "text-primary" : "text-white"}`}
+          >
             <div className="relative w-11 h-11 flex items-center justify-center rounded-lg bg-white/15 overflow-hidden border border-white/20">
               <Image
                 src="/logo.jpeg"
@@ -45,7 +48,7 @@ export default function Navbar() {
               />
             </div>
             <span className="text-xl font-bold tracking-tight">Kreo</span>
-          </div>
+          </a>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
@@ -102,12 +105,16 @@ export default function Navbar() {
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-50 bg-white p-6 md:hidden">
           <div className="flex items-center justify-between mb-8">
-            <div className="flex items-center gap-3">
+            <a
+              href="#hero"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center gap-3"
+            >
               <div className="relative w-10 h-10 overflow-hidden rounded-lg">
                 <Image src="/logo.jpeg" alt="Kreo logo" fill className="object-contain" sizes="40px" />
               </div>
               <span className="font-bold text-lg text-gray-900">Kreo</span>
-            </div>
+            </a>
             <button
               onClick={() => setMobileMenuOpen(false)}
               aria-label="Close menu"

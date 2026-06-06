@@ -56,7 +56,7 @@ export default function Services() {
   return (
     <section id="services" className="py-16 md:py-24 px-5 md:px-12 lg:px-20 max-w-7xl mx-auto">
       {/* Section Header */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 md:mb-16 gap-4 md:gap-6 fade-in-up">
+      <div data-reveal="fade-up" className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 md:mb-16 gap-4 md:gap-6">
         <div>
           <div className="section-divider"></div>
           <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-4 tracking-tight">
@@ -83,7 +83,9 @@ export default function Services() {
         {services.map((service, index) => (
           <div
             key={index}
-            className={`card-hover relative bg-white border border-gray-200 rounded-xl p-8 flex flex-col gap-4 fade-in-up ${service.delay} group cursor-default`}
+            data-reveal={index % 2 === 0 ? "slide-left" : "slide-right"}
+            data-reveal-delay={String(index * 100)}
+            className={`card-hover relative bg-white border border-gray-200 rounded-xl p-8 flex flex-col gap-4 group cursor-default`}
           >
             {/* Subtle background pattern */}
             <div className="absolute inset-0 tech-bg-pattern pointer-events-none rounded-xl"></div>

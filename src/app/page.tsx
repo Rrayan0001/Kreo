@@ -11,6 +11,7 @@ import Footer from "@/components/Footer";
 import CookieConsent from "@/components/CookieConsent";
 import Chatbot from "@/components/Chatbot";
 import ContactForm from "@/components/ContactForm";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export default function Home() {
   return (
@@ -20,11 +21,13 @@ export default function Home() {
 
       {/* Main Content */}
       <main className="flex-grow">
-        {/* Hero Section */}
+        {/* Hero Section — always visible immediately */}
         <Hero />
 
         {/* Tech Stack Marquee */}
-        <Ticker />
+        <div data-reveal="fade-in">
+          <Ticker />
+        </div>
 
         {/* Services / Solutions Specifications */}
         <Services />
@@ -33,7 +36,9 @@ export default function Home() {
         <Timeline />
 
         {/* Comparison Section (Why Choose Kreo) */}
-        <Comparison />
+        <div data-reveal="slide-right">
+          <Comparison />
+        </div>
 
         {/* Call to Action Consultation Banner */}
         <CTA />
@@ -46,11 +51,16 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <Footer />
+      <div data-reveal="fade-up" data-reveal-delay="200">
+        <Footer />
+      </div>
 
       {/* Interactive Widgets */}
       <CookieConsent />
       <Chatbot />
+
+      {/* Mount the scroll-reveal observer (renders nothing) */}
+      <ScrollReveal />
     </div>
   );
 }

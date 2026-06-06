@@ -33,7 +33,7 @@ export default function Timeline() {
   return (
     <section className="py-16 md:py-20 bg-white border-t border-gray-100">
       <div className="max-w-7xl mx-auto px-5 md:px-12 lg:px-20">
-        <div className="text-center mb-16 fade-in-up">
+        <div data-reveal="fade-up" className="text-center mb-16">
           <span className="text-xs font-bold text-primary uppercase tracking-widest mb-3 block">
             Our Methodology
           </span>
@@ -52,7 +52,9 @@ export default function Timeline() {
             {steps.map((step, idx) => (
               <div
                 key={idx}
-                className={`relative z-10 flex flex-row md:flex-col items-start md:items-center text-left md:text-center gap-5 md:gap-0 group fade-in-up delay-${(idx + 1) * 100}`}
+                data-reveal="fade-up"
+                data-reveal-delay={String(idx * 150)}
+                className={`relative z-10 flex flex-row md:flex-col items-start md:items-center text-left md:text-center gap-5 md:gap-0 group`}
               >
                 <div className="w-14 h-14 md:w-20 md:h-20 shrink-0 rounded-full bg-white border-2 border-gray-200 group-hover:border-primary group-hover:shadow-lg group-hover:shadow-primary/10 transition-all duration-300 flex items-center justify-center mb-0 md:mb-6 relative">
                   <span className="material-symbols-outlined text-2xl md:text-3xl text-gray-400 group-hover:text-primary transition-colors duration-300">

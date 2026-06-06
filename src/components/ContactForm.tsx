@@ -46,7 +46,7 @@ export default function ContactForm() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
           {/* Left Side: Contact Information Cards */}
-          <div className="lg:col-span-5 space-y-6 fade-in-up">
+          <div data-reveal="fade-up" className="lg:col-span-5 space-y-6">
             <div>
               <div className="section-divider"></div>
               <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-4 tracking-tight leading-tight">
@@ -94,7 +94,7 @@ export default function ContactForm() {
           </div>
 
           {/* Right Side: Calendly Interactive Booking Console */}
-          <div className="lg:col-span-7 bg-white border border-gray-200/70 rounded-2xl p-4 sm:p-6 shadow-md relative overflow-hidden fade-in-up delay-100">
+          <div data-reveal="fade-up" data-reveal-delay="150" className="lg:col-span-7 bg-white border border-gray-200/70 rounded-2xl p-4 sm:p-6 shadow-md relative overflow-hidden">
             {/* Calendly Inline Widget Embed directly */}
             <div className="relative w-full h-[550px] border border-gray-100 rounded-xl overflow-hidden shadow-inner bg-gray-50">
               <iframe

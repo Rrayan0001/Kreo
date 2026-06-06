@@ -50,7 +50,7 @@ export default function Hero() {
       </div>
 
       {/* Full-bleed video hero */}
-      <section className="hero-video-section">
+      <section id="hero" className="hero-video-section">
         {/* Background Video */}
         {videoSrc && (
           <video

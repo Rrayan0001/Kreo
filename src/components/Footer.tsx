@@ -128,7 +128,7 @@ export default function Footer() {
               <i className="fab fa-instagram"></i>
             </a>
             <a
-              href="https://linkedin.com/in/kreo_softwares"
+              href="https://www.linkedin.com/company/kreo-groups/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-9 h-9 flex items-center justify-center rounded-lg bg-white/5 border border-white/10 text-gray-400 hover:text-primary hover:border-primary/40 hover:bg-primary/10 transition-all text-lg"

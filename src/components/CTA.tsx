@@ -10,7 +10,7 @@ export default function CTA() {
       <div className="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-white/5 pointer-events-none"></div>
       <div className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-black/10 pointer-events-none"></div>
 
-      <div className="max-w-4xl mx-auto text-center relative z-10 fade-in-up">
+      <div data-reveal="zoom-up" className="max-w-4xl mx-auto text-center relative z-10">
         <p className="text-orange-200 text-sm font-bold uppercase tracking-widest mb-4">
           Start Your Project Today
         </p>

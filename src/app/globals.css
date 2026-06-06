@@ -416,4 +416,58 @@ h1, h2, h3, h4, h5, h6 {
   scrollbar-width: none;
 }
 
+/* ========================================================
+   SCROLL-REVEAL SYSTEM
+   Elements carry [data-reveal="variant"] and get the class
+   "revealed" added by ScrollReveal.tsx via IntersectionObserver.
+   ======================================================== */
+
+/* --- Initial hidden states (before scroll triggers) --- */
+[data-reveal] {
+  opacity: 0;
+  will-change: opacity, transform;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  transition-duration: 0.7s;
+  transition-property: opacity, transform;
+}
+
+[data-reveal="fade-up"]     { transform: translateY(40px); }
+[data-reveal="fade-down"]   { transform: translateY(-40px); }
+[data-reveal="slide-left"]  { transform: translateX(-60px); }
+[data-reveal="slide-right"] { transform: translateX(60px); }
+[data-reveal="scale-in"]    { transform: scale(0.88); }
+[data-reveal="fade-in"]     { transform: none; }
+[data-reveal="zoom-up"]     { transform: translateY(30px) scale(0.92); }
+
+/* --- Revealed state (class added by JS observer) --- */
+[data-reveal].revealed {
+  opacity: 1;
+  transform: none !important;
+}
+
+/* Stagger delays for reveal children */
+[data-reveal-delay="100"] { transition-delay: 100ms !important; }
+[data-reveal-delay="150"] { transition-delay: 150ms !important; }
+[data-reveal-delay="200"] { transition-delay: 200ms !important; }
+[data-reveal-delay="250"] { transition-delay: 250ms !important; }
+[data-reveal-delay="300"] { transition-delay: 300ms !important; }
+[data-reveal-delay="350"] { transition-delay: 350ms !important; }
+[data-reveal-delay="400"] { transition-delay: 400ms !important; }
+[data-reveal-delay="500"] { transition-delay: 500ms !important; }
+[data-reveal-delay="600"] { transition-delay: 600ms !important; }
+[data-reveal-delay="700"] { transition-delay: 700ms !important; }
+
+/* ========================================================
+   COOKIE CONSENT MODAL ANIMATION
+   ======================================================== */
+@keyframes cookieModalIn {
+  from {
+    opacity: 0;
+    transform: scale(0.82) translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
 
