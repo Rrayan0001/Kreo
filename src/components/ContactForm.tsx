@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 // EDIT THIS URL TO INTEGRATE YOUR OWN CALENDLY SCHEDULE PAGE
 const CALENDLY_URL = "https://calendly.com/kreo_pvt_ltd";
@@ -18,6 +18,40 @@ export default function ContactForm() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+
+  // Catch booking completion event from the Calendly iframe
+  useEffect(() => {
+    const handleCalendlyEvent = async (e: MessageEvent) => {
+      // Check that the origin is Calendly and it contains event payload data
+      if (e.origin.includes("calendly.com") && e.data.event) {
+        // 'calendly.event_scheduled' signals a successful appointment booking
+        if (e.data.event === "calendly.event_scheduled") {
+          const { invitee, event } = e.data.payload;
+          
+          console.log("Calendly schedule event triggered:", invitee.uri);
+
+          try {
+            // Send booking event details to our secure backend API route
+            const res = await fetch("/api/calendly", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                inviteeUri: invitee.uri,
+                eventUri: event.uri,
+              }),
+            });
+            const data = await res.json();
+            console.log("Calendly sync API response:", data);
+          } catch (err) {
+            console.error("Failed to sync booking event with backend:", err);
+          }
+        }
+      }
+    };
+
+    window.addEventListener("message", handleCalendlyEvent);
+    return () => window.removeEventListener("message", handleCalendlyEvent);
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
