@@ -49,11 +49,12 @@ export default function ServicesPreview() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {pillars.map((pillar, idx) => (
-            <div
+            <Link
               key={idx}
+              href="/services"
               data-reveal="fade-up"
               data-reveal-delay={String(idx * 150)}
-              className="bg-gray-50 border border-gray-100 rounded-2xl p-8 shadow-sm hover:shadow-md transition-all duration-300 group relative flex flex-col justify-between min-h-[240px]"
+              className="bg-gray-50 border border-gray-100 rounded-2xl p-8 shadow-sm hover:shadow-md transition-all duration-300 group relative flex flex-col justify-between min-h-[240px] cursor-pointer"
             >
               <div>
                 <div className="w-12 h-12 border border-primary/20 rounded-lg bg-primary/5 flex items-center justify-center text-primary mb-5">
@@ -69,7 +70,7 @@ export default function ServicesPreview() {
                   arrow_forward
                 </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
