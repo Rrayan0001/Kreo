@@ -377,20 +377,13 @@ export default function Services() {
               ))}
             </div>
 
-            {/* Footer with Enquire button */}
-            <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-gray-100 justify-end items-center">
+            {/* Footer */}
+            <div className="flex justify-end pt-4 border-t border-gray-100 items-center">
               <button
                 onClick={() => setActiveService(null)}
-                className="w-full sm:w-auto px-5 py-2.5 text-xs font-bold text-gray-500 hover:text-gray-900 transition-colors bg-transparent border-0 cursor-pointer"
+                className="px-6 py-2.5 text-xs font-bold text-white bg-primary hover:bg-primary-hover rounded-xl shadow-lg shadow-primary/25 transition-all cursor-pointer"
               >
                 Back to Grid
-              </button>
-              <button
-                onClick={handleModalCTA}
-                className="w-full sm:w-auto bg-primary hover:bg-primary-hover text-white text-xs font-bold py-2.5 px-6 rounded-xl transition-all cursor-pointer shadow-lg shadow-primary/25 flex items-center justify-center gap-1.5"
-              >
-                <span className="material-symbols-outlined text-sm">calendar_month</span>
-                Book Discovery Session
               </button>
             </div>
           </div>

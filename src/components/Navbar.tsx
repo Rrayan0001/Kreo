@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -42,7 +43,7 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 flex items-center justify-between">
           {/* Logo */}
-          <a
+          <Link
             href="/"
             className={`flex items-center gap-3 transition-colors duration-300 ${scrolled ? "text-primary" : "text-white"}`}
           >
@@ -55,46 +56,45 @@ export default function Navbar() {
                 sizes="44px"
               />
             </div>
-            <span className="text-xl font-bold tracking-tight">Kreo</span>
-          </a>
+          </Link>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
             <nav className="flex items-center gap-8">
-              <a
+              <Link
                 href="/about"
                 className={`text-sm font-medium transition-colors duration-300 ${
                   scrolled ? "text-gray-600 hover:text-primary" : "text-white/80 hover:text-white"
                 }`}
               >
                 About Us
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/services"
                 className={`text-sm font-medium transition-colors duration-300 ${
                   scrolled ? "text-gray-600 hover:text-primary" : "text-white/80 hover:text-white"
                 }`}
               >
                 Services
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/#testimonials"
                 className={`text-sm font-medium transition-colors duration-300 ${
                   scrolled ? "text-gray-600 hover:text-primary" : "text-white/80 hover:text-white"
                 }`}
               >
                 Testimonials
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/#contact-form"
                 className={`text-sm font-medium transition-colors duration-300 ${
                   scrolled ? "text-gray-600 hover:text-primary" : "text-white/80 hover:text-white"
                 }`}
               >
                 Contact Us
-              </a>
+              </Link>
             </nav>
-            <a
+            <Link
               href="/#contact-form"
               className={`text-sm font-bold h-10 px-6 rounded-lg flex items-center transition-all duration-300 ${
                 scrolled
@@ -103,7 +103,7 @@ export default function Navbar() {
               }`}
             >
               Start Project
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -121,16 +121,15 @@ export default function Navbar() {
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-50 bg-white p-6 md:hidden">
           <div className="flex items-center justify-between mb-8">
-            <a
+            <Link
               href="/"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-3"
+              className="flex items-center"
             >
               <div className="relative w-10 h-10 overflow-hidden rounded-lg">
                 <Image src="/logo.jpeg" alt="Kreo logo" fill className="object-contain" sizes="40px" />
               </div>
-              <span className="font-bold text-lg text-gray-900">Kreo</span>
-            </a>
+            </Link>
             <button
               onClick={() => setMobileMenuOpen(false)}
               aria-label="Close menu"
@@ -140,25 +139,25 @@ export default function Navbar() {
             </button>
           </div>
           <nav className="flex flex-col gap-4 text-lg">
-            <a href="/about" onClick={() => setMobileMenuOpen(false)} className="font-medium text-gray-800 hover:text-primary py-3.5 border-b border-gray-100 flex items-center">
+            <Link href="/about" onClick={() => setMobileMenuOpen(false)} className="font-medium text-gray-800 hover:text-primary py-3.5 border-b border-gray-100 flex items-center">
               About Us
-            </a>
-            <a href="/services" onClick={() => setMobileMenuOpen(false)} className="font-medium text-gray-800 hover:text-primary py-3.5 border-b border-gray-100 flex items-center">
+            </Link>
+            <Link href="/services" onClick={() => setMobileMenuOpen(false)} className="font-medium text-gray-800 hover:text-primary py-3.5 border-b border-gray-100 flex items-center">
               Services
-            </a>
-            <a href="/#testimonials" onClick={() => setMobileMenuOpen(false)} className="font-medium text-gray-800 hover:text-primary py-3.5 border-b border-gray-100 flex items-center">
+            </Link>
+            <Link href="/#testimonials" onClick={() => setMobileMenuOpen(false)} className="font-medium text-gray-800 hover:text-primary py-3.5 border-b border-gray-100 flex items-center">
               Testimonials
-            </a>
-            <a href="/#contact-form" onClick={() => setMobileMenuOpen(false)} className="font-medium text-gray-800 hover:text-primary py-3.5 border-b border-gray-100 flex items-center">
+            </Link>
+            <Link href="/#contact-form" onClick={() => setMobileMenuOpen(false)} className="font-medium text-gray-800 hover:text-primary py-3.5 border-b border-gray-100 flex items-center">
               Contact Us
-            </a>
-            <a
+            </Link>
+            <Link
               href="/#contact-form"
               onClick={() => setMobileMenuOpen(false)}
               className="bg-primary text-white h-12 px-6 rounded-lg inline-flex items-center justify-center w-full mt-6 font-bold"
             >
               Start Project
-            </a>
+            </Link>
           </nav>
         </div>
       )}

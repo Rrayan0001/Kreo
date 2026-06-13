@@ -24,9 +24,6 @@ export default function Footer() {
                   sizes="44px"
                 />
               </div>
-              <span className="font-display text-2xl font-bold text-white">
-                Kreo
-              </span>
             </div>
             <p className="mb-6 max-w-md text-gray-400 leading-relaxed">
               Your trusted technology partner for scalable software solutions, digital transformation,
@@ -152,7 +149,6 @@ export default function Footer() {
             <div className="relative w-6 h-6 overflow-hidden rounded">
               <Image src="/logo.jpeg" alt="Logo" fill className="object-contain" sizes="24px" />
             </div>
-            <span className="text-sm font-bold text-white">Kreo</span>
           </div>
           <div className="text-sm text-gray-500">
             © 2026 Kreo. All rights reserved.
