@@ -16,7 +16,7 @@ const images = [
   { id: 1, src: "/gallery/gallery-1.jpeg", alt: "Collaborative Coding Workspace", title: "Collaborative Coding Workspace", category: "Development Labs" },
   { id: 2, src: "/gallery/gallery-2.jpeg", alt: "KREO Presentation & Seminar", title: "KREO Presentation & Seminar", category: "Classrooms & Seminars" },
   { id: 3, src: "/gallery/gallery-3.jpeg", alt: "Ultrasonic Radar IoT System", title: "Ultrasonic Radar IoT System", category: "IoT & Hardware Desk" },
-  { id: 4, src: "/gallery/gallery-4.jpeg", alt: "Guest Lecture by Founder Janhavi Akalwadi", title: "Guest Lecture by Founder Janhavi Akalwadi", category: "Classrooms & Seminars" },
+  { id: 4, src: "/gallery/gallery-4.jpeg", alt: "Guest Lecture by Technical Lead Janhavi Akalwadi", title: "Guest Lecture by Technical Lead Janhavi Akalwadi", category: "Classrooms & Seminars" },
   { id: 5, src: "/gallery/gallery-5.jpeg", alt: "Smart Home Automation Prototype", title: "Smart Home Automation Prototype", category: "IoT & Hardware Desk" },
   { id: 6, src: "/gallery/gallery-6.jpeg", alt: "Full-Stack Development Presentation", title: "Full-Stack Development Presentation", category: "Classrooms & Seminars" },
   { id: 7, src: "/gallery/gallery-7.jpeg", alt: "Architecture Planning & System Design", title: "Architecture Planning & System Design", category: "Collaboration Zone" },

@@ -8,7 +8,7 @@ const previewImages = [
   { id: 1, src: "/gallery/gallery-1.jpeg", alt: "Collaborative Coding Workspace" },
   { id: 2, src: "/gallery/gallery-2.jpeg", alt: "KREO Presentation & Seminar" },
   { id: 3, src: "/gallery/gallery-3.jpeg", alt: "Ultrasonic Radar IoT System" },
-  { id: 4, src: "/gallery/gallery-4.jpeg", alt: "Guest Lecture by Founder Janhavi Akalwadi" },
+  { id: 4, src: "/gallery/gallery-4.jpeg", alt: "Guest Lecture by Technical Lead Janhavi Akalwadi" },
 ];
 
 export default function GalleryPreview() {
