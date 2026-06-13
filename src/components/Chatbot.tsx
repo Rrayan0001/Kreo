@@ -121,7 +121,7 @@ export default function Chatbot() {
         "Wonderful choice. Schedule your meeting slot directly here:",
         ["Main Menu"],
         "Schedule Consultation ↗",
-        "https://docs.google.com/forms/d/e/1FAIpQLSfqlB98dAnGISbReIGRJjDMlCRktA2zE2V3Dr6T6XBTvZUoRg/viewform?usp=header"
+        "https://calendly.com/kreo-pvt-ltd/30min"
       );
     }
   };

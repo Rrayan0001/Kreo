@@ -267,8 +267,17 @@ export default function Services() {
             <div
               key={index}
               data-reveal={index % 2 === 0 ? "slide-left" : "slide-right"}
-              data-reveal-delay={String(index * 100)}
-              className="card-hover relative bg-white border border-gray-200 rounded-xl p-8 flex flex-col gap-4 group cursor-default"
+              data-reveal-delay={String((index % 3) * 100)}
+              onClick={() => handleLearnMore(service)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  handleLearnMore(service);
+                }
+              }}
+              className="card-hover relative bg-white border border-gray-200 rounded-xl p-8 flex flex-col gap-4 group cursor-pointer transition-all active:scale-[0.99]"
             >
               {/* Subtle background pattern */}
               <div className="absolute inset-0 tech-bg-pattern pointer-events-none rounded-xl opacity-5"></div>
@@ -295,15 +304,18 @@ export default function Services() {
               </div>
 
               {/* Bottom: hover arrow */}
-              <button
-                onClick={() => handleLearnMore(service)}
-                className="relative z-10 mt-auto pt-5 border-t border-dashed border-gray-200 flex items-center justify-between text-left w-full bg-transparent border-0 cursor-pointer"
+              <div
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleLearnMore(service);
+                }}
+                className="relative z-10 mt-auto pt-5 border-t border-dashed border-gray-200 flex items-center justify-between w-full cursor-pointer"
               >
                 <span className="text-xs text-gray-400 font-bold uppercase tracking-wider group-hover:text-primary transition-colors">Learn more</span>
                 <span className="material-symbols-outlined text-primary text-[18px] group-hover:translate-x-1 transition-transform">
                   arrow_forward
                 </span>
-              </button>
+              </div>
 
               {/* Hover left accent border */}
               <div className="absolute left-0 top-0 bottom-0 w-1 bg-primary rounded-l-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -378,12 +390,19 @@ export default function Services() {
             </div>
 
             {/* Footer */}
-            <div className="flex justify-end pt-4 border-t border-gray-100 items-center">
+            <div className="flex justify-end pt-4 border-t border-gray-100 items-center gap-3">
               <button
                 onClick={() => setActiveService(null)}
-                className="px-6 py-2.5 text-xs font-bold text-white bg-primary hover:bg-primary-hover rounded-xl shadow-lg shadow-primary/25 transition-all cursor-pointer"
+                className="px-5 py-2.5 text-xs font-semibold text-gray-600 hover:text-gray-900 bg-gray-100 hover:bg-gray-200 rounded-xl transition-all cursor-pointer"
               >
                 Back to Grid
+              </button>
+              <button
+                onClick={handleModalCTA}
+                className="px-5 py-2.5 text-xs font-bold text-white bg-primary hover:bg-primary-hover rounded-xl shadow-lg shadow-primary/25 transition-all cursor-pointer flex items-center gap-1.5"
+              >
+                <span className="material-symbols-outlined text-sm">calendar_month</span>
+                Book Consultation
               </button>
             </div>
           </div>

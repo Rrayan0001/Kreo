@@ -1,8 +1,7 @@
 import React from "react";
+import Link from "next/link";
 
 export default function CTA() {
-  const consultationUrl =
-    "https://docs.google.com/forms/d/e/1FAIpQLSfqlB98dAnGISbReIGRJjDMlCRktA2zE2V3Dr6T6XBTvZUoRg/viewform?usp=header";
 
   return (
     <section className="py-16 md:py-28 px-5 md:px-12 lg:px-20 bg-primary text-white relative overflow-hidden">
@@ -22,15 +21,13 @@ export default function CTA() {
           reality — delivered on time, on budget.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <a
-            href={consultationUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/#contact-form"
             className="btn-primary bg-white text-primary h-14 px-10 rounded-lg flex items-center justify-center font-black hover:bg-orange-50 transition-colors shadow-2xl text-base w-full sm:w-auto"
           >
             <span className="material-symbols-outlined mr-2">calendar_month</span>
             Book a Free Consultation
-          </a>
+          </Link>
           <a
             href="tel:+918123685041"
             className="border-2 border-white/40 text-white h-14 px-10 rounded-lg flex items-center justify-center font-semibold hover:bg-white/10 transition-all text-base w-full sm:w-auto"
