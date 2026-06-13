@@ -283,6 +283,7 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   overflow: clip;
+  background: #09090b url('/hero-poster.png') no-repeat center center / cover;
 }
 
 .hero-video-bg {
@@ -477,4 +478,29 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* CSS iframe scroll-bypass removed in favor of React stateful handlers */
+
+/* ========== MOBILE OPTIMIZATIONS ========== */
+@media (max-width: 767px) {
+  /* Prevent horizontal layout shifts for animations on mobile */
+  [data-reveal="slide-left"],
+  [data-reveal="slide-right"] {
+    transform: translateY(30px);
+  }
+}
+
+/* Smooth mobile menu slide down transition */
+@keyframes slideDownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobile-nav-in {
+  animation: slideDownIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
 

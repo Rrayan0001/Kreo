@@ -119,7 +119,7 @@ export default function Navbar() {
 
       {/* Mobile Overlay */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-50 bg-white p-6 md:hidden">
+        <div className="fixed inset-0 z-50 bg-white p-6 md:hidden mobile-nav-in">
           <div className="flex items-center justify-between mb-8">
             <Link
               href="/"

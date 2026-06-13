@@ -14,7 +14,8 @@ export default function Hero() {
   useEffect(() => {
     const checkResponsiveSrc = () => {
       const isMobile = window.innerWidth <= 767;
-      setVideoSrc(isMobile ? "/Portrait.mp4" : "/hero-video.mp4");
+      const targetSrc = isMobile ? "/Portrait.mp4" : "/hero-video.mp4";
+      setVideoSrc((prev) => (prev !== targetSrc ? targetSrc : prev));
     };
 
     // Run on mount
@@ -83,6 +84,7 @@ export default function Hero() {
             loop
             playsInline
             preload="auto"
+            poster="/hero-poster.png"
           >
             <source src={videoSrc} type="video/mp4" />
           </video>
@@ -104,7 +106,7 @@ export default function Hero() {
           <p className="fade-in text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] sm:tracking-[0.3em] text-orange-300 mb-3 sm:mb-6 px-2 md:px-0">
             Engineering Digital Transformation
           </p>
-          <h1 className="fade-in-up delay-100 text-[1.75rem] sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.08] tracking-tight w-full max-w-[260px] sm:max-w-xl md:max-w-3xl">
+          <h1 className="fade-in-up delay-100 text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.08] tracking-tight w-full max-w-[320px] sm:max-w-xl md:max-w-3xl">
             Build Smarter.<br />Grow Faster.
           </h1>
           <div className="fade-in-up delay-300 mt-6 sm:mt-10 flex flex-col sm:flex-row gap-4 justify-center md:justify-start w-full max-w-[240px] sm:max-w-none items-center">
