@@ -2,10 +2,12 @@ import React from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Ticker from "@/components/Ticker";
-import Services from "@/components/Services";
-import Timeline from "@/components/Timeline";
+import AboutPreview from "@/components/AboutPreview";
+import ServicesPreview from "@/components/ServicesPreview";
 import Comparison from "@/components/Comparison";
 import BusinessFlow from "@/components/BusinessFlow";
+import Testimonials from "@/components/Testimonials";
+import Clients from "@/components/Clients";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 import CookieConsent from "@/components/CookieConsent";
@@ -15,7 +17,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 
 export default function Home() {
   return (
-    <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+    <div className="relative flex min-h-screen w-full flex-col">
       {/* Navigation */}
       <Navbar />
 
@@ -29,11 +31,11 @@ export default function Home() {
           <Ticker />
         </div>
 
-        {/* Services / Solutions Specifications */}
-        <Services />
+        {/* About Preview Section */}
+        <AboutPreview />
 
-        {/* Timeline Methodology Section */}
-        <Timeline />
+        {/* Services Preview Section */}
+        <ServicesPreview />
 
         {/* Comparison Section (Why Choose Kreo) */}
         <div data-reveal="slide-right">
@@ -45,6 +47,12 @@ export default function Home() {
 
         {/* BusinessFlow OS Details */}
         <BusinessFlow />
+
+        {/* Testimonials (Electrons & Clients) */}
+        <Testimonials />
+
+        {/* Happy Clients & Educational Partners */}
+        <Clients />
 
         {/* Details Collection Contact Form */}
         <ContactForm />

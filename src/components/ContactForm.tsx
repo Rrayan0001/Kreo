@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 // EDIT THIS URL TO INTEGRATE YOUR OWN CALENDLY SCHEDULE PAGE
 const CALENDLY_URL = "https://calendly.com/kreo-pvt-ltd/30min";
 
 export default function ContactForm() {
+  const [isCalendlyActive, setIsCalendlyActive] = useState(false);
   // Catch booking completion event from the Calendly iframe
   useEffect(() => {
     const handleCalendlyEvent = async (e: MessageEvent) => {
@@ -94,16 +95,43 @@ export default function ContactForm() {
           </div>
 
           {/* Right Side: Calendly Interactive Booking Console */}
-          <div data-reveal="fade-up" data-reveal-delay="150" className="lg:col-span-7 bg-white border border-gray-200/70 rounded-2xl p-4 sm:p-6 shadow-md relative overflow-hidden">
-            {/* Calendly Inline Widget Embed directly */}
-            <div className="relative w-full h-[550px] border border-gray-100 rounded-xl overflow-hidden shadow-inner bg-gray-50">
+          <div data-reveal="fade-up" data-reveal-delay="150" className="lg:col-span-7 bg-white border border-gray-200/70 rounded-2xl p-4 sm:p-6 shadow-md relative">
+            <div
+              className="relative w-full h-[550px] border border-gray-100 rounded-xl overflow-hidden shadow-inner bg-gray-50"
+              onMouseLeave={() => setIsCalendlyActive(false)}
+            >
               <iframe
                 src={`${CALENDLY_URL}?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=d85604`}
                 width="100%"
                 height="100%"
-                style={{ border: 0 }}
+                style={{
+                  border: 0,
+                  pointerEvents: isCalendlyActive ? "auto" : "none",
+                }}
                 title="Schedule a consultation with Kreo"
               ></iframe>
+              {/* Escape/Lock button for mobile scroll recovery */}
+              {isCalendlyActive && (
+                <button
+                  onClick={() => setIsCalendlyActive(false)}
+                  className="absolute bottom-3 right-3 bg-[#09090b] hover:bg-zinc-800 text-white font-bold py-2 px-4 rounded-lg shadow-xl flex items-center gap-1.5 z-20 text-xs cursor-pointer border border-zinc-700 transition-all active:scale-95"
+                >
+                  <span className="material-symbols-outlined text-[14px]">lock</span>
+                  Lock Scroll
+                </button>
+              )}
+              {/* Subtle Overlay text prompt for desktop */}
+              {!isCalendlyActive && (
+                <div
+                  className="absolute inset-0 backdrop-blur-[1px] bg-black/5 select-none flex items-center justify-center cursor-pointer z-10 transition-opacity duration-300"
+                  onClick={() => setIsCalendlyActive(true)}
+                >
+                  <span className="bg-primary hover:bg-primary-hover text-white text-xs font-bold py-2.5 px-5 rounded-lg shadow-lg flex items-center gap-1.5 pointer-events-none">
+                    <span className="material-symbols-outlined text-[14px]">calendar_month</span>
+                    Click to Book Session
+                  </span>
+                </div>
+              )}
             </div>
           </div>
 

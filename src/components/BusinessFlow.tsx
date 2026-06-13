@@ -180,7 +180,7 @@ export default function BusinessFlow() {
   };
 
   return (
-    <section id="business" className="bg-[#FAF9F6] py-20 md:py-28 relative overflow-hidden border-t border-gray-100">
+    <section id="business" className="bg-[#FAF9F6] py-20 md:py-28 relative overflow-clip border-t border-gray-100">
       {/* Background blueprint elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none z-0"></div>
       <div className="absolute -bottom-24 -left-24 w-[500px] h-[500px] bg-orange-400/5 rounded-full blur-3xl pointer-events-none z-0"></div>

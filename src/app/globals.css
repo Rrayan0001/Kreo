@@ -2,10 +2,13 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-html,
+html {
+  /* Clean slate to prevent scroll container conflicts */
+}
+
 body {
   max-width: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 @theme {
@@ -156,8 +159,8 @@ h1, h2, h3, h4, h5, h6 {
   top: 5rem;
   right: 1rem;
   z-index: 45;
-  width: 180px;
-  height: 92px;
+  width: 140px;
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -179,8 +182,8 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 640px) {
   .msme-banner {
-    width: 90px;
-    height: 50px;
+    width: 70px;
+    height: 40px;
     top: 4.5rem;
     bottom: auto;
     right: 0.5rem;
@@ -198,7 +201,7 @@ h1, h2, h3, h4, h5, h6 {
 /* ========== TICKER MARQUEE ========== */
 .ticker {
   position: relative;
-  overflow: hidden;
+  overflow: clip;
   width: 100%;
 }
 
@@ -231,10 +234,7 @@ h1, h2, h3, h4, h5, h6 {
   flex-shrink: 0;
 }
 
-.ticker:hover .ticker-track,
-.ticker:hover .ticker-track-reverse {
-  animation-play-state: paused;
-}
+/* Ticker hover-pause removed — it caused scroll interception issues */
 
 @keyframes marquee {
   from { transform: translateX(0); }
@@ -282,7 +282,7 @@ h1, h2, h3, h4, h5, h6 {
   min-height: 100dvh;
   display: flex;
   align-items: center;
-  overflow: hidden;
+  overflow: clip;
 }
 
 .hero-video-bg {
@@ -431,7 +431,6 @@ h1, h2, h3, h4, h5, h6 {
 /* --- Initial hidden states (before scroll triggers) --- */
 [data-reveal] {
   opacity: 0;
-  will-change: opacity, transform;
   transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
   transition-duration: 0.7s;
   transition-property: opacity, transform;
@@ -476,4 +475,6 @@ h1, h2, h3, h4, h5, h6 {
     transform: scale(1) translateY(0);
   }
 }
+
+/* CSS iframe scroll-bypass removed in favor of React stateful handlers */
 

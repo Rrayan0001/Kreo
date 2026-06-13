@@ -1,7 +1,10 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Image from "next/image";
 
 export default function Footer() {
+  const [isMapActive, setIsMapActive] = useState(false);
   const mapEmbedUrl =
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3845.4879839051514!2d75.0060246!3d15.458162100000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb8cd795af6a8af%3A0xcb9a937f06ee47ba!2sKreo%20softwares!5e0!3m2!1sen!2sin!4v1770354685926!5m2!1sen!2sin";
 
@@ -45,11 +48,19 @@ export default function Footer() {
                   <span className="material-symbols-outlined text-[20px]">location_on</span>
                 </div>
                 <div>
-                  <h4 className="font-bold text-white mb-0.5">Visit Us</h4>
-                  <p className="text-sm text-gray-400 leading-relaxed">
+                  <h4 className="font-bold text-white mb-0.5">Headquarters</h4>
+                  <p className="text-sm text-gray-400 leading-relaxed mb-4">
                     R N Shetty Stadium Complex, 1st Floor, Shop No. 27,
                     <br />KCD College Road, Dharwad – 580001
                   </p>
+                  <h4 className="text-xs font-bold text-white/55 uppercase tracking-wider mb-2">Regional Presence</h4>
+                  <div className="flex flex-wrap gap-2 max-w-sm">
+                    {["Dharwad 2", "Sankeshwar", "Bagalkot", "Kolhapur", "Davangere"].map((city) => (
+                      <span key={city} className="text-xs font-semibold px-2.5 py-1 rounded bg-white/5 border border-white/5 text-gray-300 select-none">
+                        {city}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
 
@@ -92,17 +103,46 @@ export default function Footer() {
           </div>
 
           {/* Map Frame */}
-          <div className="h-[240px] md:h-full min-h-[240px] md:min-h-[320px] w-full overflow-hidden rounded-2xl border border-white/10">
+          <div
+            className="h-[240px] md:h-full min-h-[240px] md:min-h-[320px] w-full overflow-hidden rounded-2xl border border-white/10 relative"
+            onMouseLeave={() => setIsMapActive(false)}
+          >
             <iframe
               src={mapEmbedUrl}
               width="100%"
               height="100%"
-              style={{ border: 0, minHeight: "100%" }}
+              style={{
+                border: 0,
+                minHeight: "100%",
+                pointerEvents: isMapActive ? "auto" : "none",
+              }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               title="Kreo Location Map"
             ></iframe>
+            {/* Escape/Lock button for mobile scroll recovery */}
+            {isMapActive && (
+              <button
+                onClick={() => setIsMapActive(false)}
+                className="absolute bottom-3 right-3 bg-[#09090b] hover:bg-zinc-800 text-white font-bold py-2 px-4 rounded-lg shadow-xl flex items-center gap-1.5 z-20 text-xs cursor-pointer border border-zinc-700 transition-all active:scale-95"
+              >
+                <span className="material-symbols-outlined text-[14px]">lock</span>
+                Lock Map
+              </button>
+            )}
+            {/* Subtle Overlay text prompt for desktop */}
+            {!isMapActive && (
+              <div
+                className="absolute inset-0 backdrop-blur-[1px] bg-black/10 select-none flex items-center justify-center cursor-pointer z-10 transition-opacity duration-300"
+                onClick={() => setIsMapActive(true)}
+              >
+                <span className="bg-primary hover:bg-primary-hover text-white text-xs font-bold py-2 px-4 rounded-lg shadow-lg flex items-center gap-1.5 pointer-events-none">
+                  <span className="material-symbols-outlined text-[14px]">gesture</span>
+                  Click to Interact
+                </span>
+              </div>
+            )}
           </div>
         </div>
 

@@ -59,13 +59,9 @@ function TickerRow({
 
 export default function Ticker() {
   return (
-    <div className="w-full bg-white border-b border-gray-100 overflow-hidden">
+    <div className="w-full bg-white border-b border-gray-100 overflow-clip">
       <div className="py-5">
-        <div className="max-w-7xl mx-auto px-6 mb-3">
-          <p className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em]">
-            Powered by Modern Standards
-          </p>
-        </div>
+        
         <div className="opacity-70 hover:opacity-100 transition-opacity duration-500">
           <TickerRow items={techItems} colorClass="text-gray-700" />
         </div>

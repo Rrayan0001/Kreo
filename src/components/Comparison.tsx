@@ -82,7 +82,7 @@ export default function Comparison() {
   ];
 
   return (
-    <section id="insight" className="relative bg-[#09090b] py-12 md:py-24 lg:py-28 overflow-hidden border-t border-zinc-900">
+    <section id="insight" className="relative bg-[#09090b] py-12 md:py-24 lg:py-28 overflow-clip border-t border-zinc-900">
       {/* Dynamic background lighting */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] pointer-events-none z-0" />
       

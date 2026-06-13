@@ -9,6 +9,7 @@ export default function Hero() {
   // then resolve immediately on mount.
   const [videoSrc, setVideoSrc] = useState<string>("");
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [audioOn, setAudioOn] = useState<boolean>(false);
 
   useEffect(() => {
     const checkResponsiveSrc = () => {
@@ -33,6 +34,26 @@ export default function Hero() {
     }
   }, [videoSrc]);
 
+  // Toggle background audio (video remains muted by default for autoplay)
+  function toggleAudio() {
+    if (!videoRef.current) return;
+    try {
+      if (audioOn) {
+        videoRef.current.muted = true;
+        setAudioOn(false);
+      } else {
+        // Unmute and attempt to play (user interaction allows audio)
+        videoRef.current.muted = false;
+        videoRef.current.play().catch((err) => {
+          console.warn("Unable to play video with audio:", err);
+        });
+        setAudioOn(true);
+      }
+    } catch (err) {
+      console.warn("Audio toggle failed:", err);
+    }
+  }
+
   return (
     <>
       {/* MSME Floating Banner */}
@@ -43,7 +64,7 @@ export default function Hero() {
             alt="MSME Logo"
             fill
             className="object-contain"
-            sizes="(max-width: 640px) 110px, 180px"
+            sizes="(max-width: 640px) 70px, 140px"
             priority
           />
         </div>
@@ -73,10 +94,12 @@ export default function Hero() {
         {/* Bottom scrim — gradient behind text only, doesn't cover the video subject */}
         <div className="hero-bottom-scrim" />
 
-        {/*
-          Desktop: text pinned to bottom-left (justify-end items-start text-left) so video is clear
-          Mobile:  text pinned to bottom-center (justify-end items-center text-center)
-        */}
+        {
+          /*
+            Desktop: text pinned to bottom-left (justify-end items-start text-left) so video is clear
+            Mobile:  text pinned to bottom-center (justify-end items-center text-center)
+          */
+        }
         <div className="absolute inset-0 z-10 flex flex-col items-center md:items-start justify-end text-center md:text-left px-5 sm:px-8 md:px-20 lg:px-24 pb-8 md:pb-14">
           <p className="fade-in text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] sm:tracking-[0.3em] text-orange-300 mb-3 sm:mb-6 px-2 md:px-0">
             Engineering Digital Transformation
@@ -84,7 +107,7 @@ export default function Hero() {
           <h1 className="fade-in-up delay-100 text-[1.75rem] sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.08] tracking-tight w-full max-w-[260px] sm:max-w-xl md:max-w-3xl">
             Build Smarter.<br />Grow Faster.
           </h1>
-          <div className="fade-in-up delay-300 mt-6 sm:mt-10 flex flex-col sm:flex-row gap-4 justify-center md:justify-start w-full max-w-[240px] sm:max-w-none">
+          <div className="fade-in-up delay-300 mt-6 sm:mt-10 flex flex-col sm:flex-row gap-4 justify-center md:justify-start w-full max-w-[240px] sm:max-w-none items-center">
             <a
               href="#services"
               className="btn-primary bg-primary hover:bg-primary-hover text-white h-11 sm:h-13 px-7 sm:px-10 py-2.5 sm:py-3.5 rounded-lg font-bold flex items-center gap-2 justify-center shadow-2xl shadow-primary/40 text-sm sm:text-base"
@@ -92,6 +115,16 @@ export default function Hero() {
               Explore Our Work
               <span className="material-symbols-outlined text-[18px]">arrow_downward</span>
             </a>
+
+            {/* Audio toggle: unmutes video on user interaction */}
+            <button
+              onClick={toggleAudio}
+              aria-pressed={audioOn}
+              title={audioOn ? "Mute background audio" : "Play background audio"}
+              className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center shadow-md"
+            >
+              <span className="material-symbols-outlined">{audioOn ? "volume_up" : "volume_off"}</span>
+            </button>
           </div>
         </div>
       </section>
