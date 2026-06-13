@@ -7,6 +7,7 @@ import ServicesPreview from "@/components/ServicesPreview";
 import Comparison from "@/components/Comparison";
 import BusinessFlow from "@/components/BusinessFlow";
 import Testimonials from "@/components/Testimonials";
+import Clients from "@/components/Clients";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 import CookieConsent from "@/components/CookieConsent";
@@ -49,6 +50,9 @@ export default function Home() {
 
         {/* Testimonials (Electrons & Clients) */}
         <Testimonials />
+
+        {/* Happy Clients & Educational Partners */}
+        <Clients />
 
         {/* Details Collection Contact Form */}
         <ContactForm />
