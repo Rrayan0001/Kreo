@@ -17,7 +17,7 @@ export default function Footer() {
             <div className="flex items-center gap-3 mb-6">
               <div className="relative w-11 h-11 overflow-hidden rounded-lg bg-white/10 border border-white/10">
                 <Image
-                  src="/logo.jpeg"
+                  src="/images/logo.jpeg"
                   alt="Kreo logo"
                   fill
                   className="object-contain"
@@ -45,19 +45,16 @@ export default function Footer() {
                   <span className="material-symbols-outlined text-[20px]">location_on</span>
                 </div>
                 <div>
-                  <h4 className="font-bold text-white mb-0.5">Headquarters</h4>
+                  <h4 className="font-bold text-white mb-0.5">Branch Office</h4>
                   <p className="text-sm text-gray-400 leading-relaxed mb-4">
                     R N Shetty Stadium Complex, 1st Floor, Shop No. 27,
                     <br />KCD College Road, Dharwad – 580001
                   </p>
-                  <h4 className="text-xs font-bold text-white/55 uppercase tracking-wider mb-2">Regional Presence</h4>
-                  <div className="flex flex-wrap gap-2 max-w-sm">
-                    {["Dharwad 2", "Sankeshwar", "Bagalkot", "Kolhapur", "Davangere"].map((city) => (
-                      <span key={city} className="text-xs font-semibold px-2.5 py-1 rounded bg-white/5 border border-white/5 text-gray-300 select-none">
-                        {city}
-                      </span>
-                    ))}
-                  </div>
+
+                  <h4 className="font-bold text-white mb-0.5">Headquaters</h4>
+                  <p className="text-sm text-gray-400 leading-relaxed">
+                    Jakati Chawl, Dixit Wada Road Line Bazar, Dharwad, 580001
+                  </p>
                 </div>
               </div>
 
@@ -147,7 +144,7 @@ export default function Footer() {
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-2">
             <div className="relative w-6 h-6 overflow-hidden rounded">
-              <Image src="/logo.jpeg" alt="Logo" fill className="object-contain" sizes="24px" />
+              <Image src="/images/logo.jpeg" alt="Logo" fill className="object-contain" sizes="24px" />
             </div>
           </div>
           <div className="text-sm text-gray-500">

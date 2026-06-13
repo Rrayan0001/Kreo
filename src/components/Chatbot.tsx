@@ -214,7 +214,7 @@ export default function Chatbot() {
           <div className="bg-primary px-4 py-3 flex items-center justify-between text-white">
             <div className="flex items-center gap-3">
               <div className="relative w-8 h-8 rounded-lg bg-white/20 overflow-hidden flex items-center justify-center border border-white/20">
-                <Image src="/logo.jpeg" alt="Kreo Assistant Logo" fill className="object-contain" sizes="32px" />
+                <Image src="/images/logo.jpeg" alt="Kreo Assistant Logo" fill className="object-contain" sizes="32px" />
               </div>
               <div>
                 <h4 className="font-bold text-sm tracking-wide">Kreo Assistant</h4>

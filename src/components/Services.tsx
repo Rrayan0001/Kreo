@@ -228,11 +228,7 @@ export default function Services() {
 
   const handleModalCTA = () => {
     setActiveService(null);
-    // Smooth scroll to the contact form
-    const contactSection = document.getElementById("contact-form");
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: "smooth" });
-    }
+    window.open("https://calendly.com/kreo-pvt-ltd/30min", "_blank");
   };
 
   return (

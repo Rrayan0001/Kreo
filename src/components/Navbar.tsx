@@ -49,7 +49,7 @@ export default function Navbar() {
           >
             <div className="relative w-11 h-11 flex items-center justify-center rounded-lg bg-white/15 overflow-hidden border border-white/20">
               <Image
-                src="/logo.jpeg"
+                src="/images/logo.jpeg"
                 alt="Kreo logo"
                 fill
                 className="object-contain"
@@ -76,6 +76,14 @@ export default function Navbar() {
                 }`}
               >
                 Services
+              </Link>
+              <Link
+                href="/gallery"
+                className={`text-sm font-medium transition-colors duration-300 ${
+                  scrolled ? "text-gray-600 hover:text-primary" : "text-white/80 hover:text-white"
+                }`}
+              >
+                Gallery
               </Link>
               <Link
                 href="/#testimonials"
@@ -127,7 +135,7 @@ export default function Navbar() {
               className="flex items-center"
             >
               <div className="relative w-10 h-10 overflow-hidden rounded-lg">
-                <Image src="/logo.jpeg" alt="Kreo logo" fill className="object-contain" sizes="40px" />
+                <Image src="/images/logo.jpeg" alt="Kreo logo" fill className="object-contain" sizes="40px" />
               </div>
             </Link>
             <button
@@ -144,6 +152,9 @@ export default function Navbar() {
             </Link>
             <Link href="/services" onClick={() => setMobileMenuOpen(false)} className="font-medium text-gray-800 hover:text-primary py-3.5 border-b border-gray-100 flex items-center">
               Services
+            </Link>
+            <Link href="/gallery" onClick={() => setMobileMenuOpen(false)} className="font-medium text-gray-800 hover:text-primary py-3.5 border-b border-gray-100 flex items-center">
+              Gallery
             </Link>
             <Link href="/#testimonials" onClick={() => setMobileMenuOpen(false)} className="font-medium text-gray-800 hover:text-primary py-3.5 border-b border-gray-100 flex items-center">
               Testimonials

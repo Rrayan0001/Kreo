@@ -14,7 +14,7 @@ export default function Hero() {
   useEffect(() => {
     const checkResponsiveSrc = () => {
       const isMobile = window.innerWidth <= 767;
-      const targetSrc = isMobile ? "/Portrait.mp4" : "/hero-video.mp4";
+      const targetSrc = isMobile ? "/videos/Portrait.mp4" : "/videos/hero-video.mp4";
       setVideoSrc((prev) => (prev !== targetSrc ? targetSrc : prev));
     };
 
@@ -61,7 +61,7 @@ export default function Hero() {
       <div className="msme-banner" aria-label="MSME Certified">
         <div className="relative w-full h-full">
           <Image
-            src="/msme.png"
+            src="/images/msme.png"
             alt="MSME Logo"
             fill
             className="object-contain"
@@ -77,17 +77,16 @@ export default function Hero() {
         {videoSrc && (
           <video
             ref={videoRef}
-            key={videoSrc} // key forces DOM element recreation on src switch
+            key={videoSrc}
+            src={videoSrc}
             className="hero-video-bg"
             autoPlay
             muted
             loop
             playsInline
             preload="auto"
-            poster="/hero-poster.png"
-          >
-            <source src={videoSrc} type="video/mp4" />
-          </video>
+            poster="/images/hero-poster.png"
+          />
         )}
 
         {/* Dark Overlay — lighter on mobile so video shows through more */}
@@ -102,7 +101,7 @@ export default function Hero() {
             Mobile:  text pinned to bottom-center (justify-end items-center text-center)
           */
         }
-        <div className="absolute inset-0 z-10 flex flex-col items-center md:items-start justify-end text-center md:text-left px-5 sm:px-8 md:px-20 lg:px-24 pb-8 md:pb-14">
+        <div className="absolute inset-0 z-10 flex flex-col items-center md:items-start justify-end text-center md:text-left px-5 sm:px-8 md:px-20 lg:px-24 pb-16 md:pb-14 pt-24 sm:pt-0">
           <p className="fade-in text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] sm:tracking-[0.3em] text-orange-300 mb-3 sm:mb-6 px-2 md:px-0">
             Engineering Digital Transformation
           </p>

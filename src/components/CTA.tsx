@@ -21,13 +21,15 @@ export default function CTA() {
           reality — delivered on time, on budget.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <Link
-            href="/#contact-form"
+          <a
+            href="https://calendly.com/kreo-pvt-ltd/30min"
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-primary bg-white text-primary h-14 px-10 rounded-lg flex items-center justify-center font-black hover:bg-orange-50 transition-colors shadow-2xl text-base w-full sm:w-auto"
           >
             <span className="material-symbols-outlined mr-2">calendar_month</span>
             Book a Free Consultation
-          </Link>
+          </a>
           <a
             href="tel:+918123685041"
             className="border-2 border-white/40 text-white h-14 px-10 rounded-lg flex items-center justify-center font-semibold hover:bg-white/10 transition-all text-base w-full sm:w-auto"

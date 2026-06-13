@@ -2,12 +2,14 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 interface TeamMember {
   name: string;
   role: string;
   image: string;
   bio: string;
+  highlight?: boolean;
 }
 
 interface ValueCard {
@@ -55,27 +57,46 @@ export default function About() {
 
   const team: TeamMember[] = [
     {
+      name: "Iranna Akalwadi",
+      role: "CEO",
+      image: "/team/IrannaAkalwadiCEO.png",
+      bio: "Visionary leader driving the core strategic direction, institutional partnerships, and commercial governance of KREO.",
+      highlight: true,
+    },
+    {
       name: "Janhavi Akalwadi",
       role: "Technical Lead",
-      image: "/TechnicalLeadJanhaviAkalwadi.jpeg",
+      image: "/team/TechnicalLeadJanhaviAkalwadi.jpeg",
       bio: "Architecting scale solutions, guiding full-stack development runs, and managing tech pipelines.",
     },
     {
       name: "Mayur Akalwadi",
       role: "Business Development Manager",
-      image: "/BusinessDevelopmentManagerMayurAkalwadi.jpeg",
+      image: "/team/BusinessDevelopmentManagerMayurAkalwadi.jpeg",
       bio: "Driving strategic partnerships and operations, connecting custom software requirements with execution plans.",
     },
     {
       name: "Guruprasad Vankalakunti",
       role: "Marketing Manager",
-      image: "/MarketingManagerGuruprasadVankalakunti.jpeg",
+      image: "/team/MarketingManagerGuruprasadVankalakunti.jpeg",
       bio: "Leading growth plans, digital communications, and customer relations across regional clusters.",
+    },
+    {
+      name: "Praveen Deshpande",
+      role: "Human Resource Manager",
+      image: "/team/PraveenDeshpandeHumanResourcemanager.png",
+      bio: "Steering recruitment strategies, training logistics, employee relationships, and regional growth operations.",
+    },
+    {
+      name: "Akshata P",
+      role: "DevOps Engineer",
+      image: "/team/AkshataPDevOpsEngineer.png",
+      bio: "Architecting cloud infrastructure, automating deployment pipelines, and ensuring continuous integration and high-availability operations.",
     },
     {
       name: "Bindu Gowda",
       role: "Software Developer",
-      image: "/SoftwareDeveloperBinduGowda.jpeg",
+      image: "/team/SoftwareDeveloperBinduGowda.jpeg",
       bio: "Developing responsive frontends, solid APIs, and maintaining robust system integrations.",
     },
   ];
@@ -334,8 +355,55 @@ export default function About() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {team.map((member, idx) => (
+          {/* Highlighted CEO Section */}
+          <div className="flex justify-center mb-20">
+            {team.filter((m) => m.highlight).map((member, idx) => (
+              <div
+                key={idx}
+                data-reveal="fade-up"
+                className="w-full max-w-4xl bg-white border-2 border-primary shadow-xl shadow-primary/10 ring-4 ring-primary/5 rounded-2xl overflow-hidden group flex flex-col md:flex-row transition-all duration-300 hover:shadow-2xl"
+              >
+                {/* Image Wrap */}
+                <div className="relative w-full aspect-[4/3] md:aspect-auto md:w-80 shrink-0 bg-gray-100 overflow-hidden">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500 object-top"
+                    sizes="(max-width: 768px) 100vw, 320px"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-950/90 via-gray-950/20 to-transparent opacity-80"></div>
+                  
+                  {/* Highlighted CEO Badge */}
+                  <div className="absolute top-4 left-4 z-20 bg-primary text-white text-[10px] font-black uppercase tracking-widest px-3.5 py-1.5 rounded-full shadow-md flex items-center gap-1.5 animate-pulse-glow">
+                    <span className="material-symbols-outlined text-[12px]">star</span>
+                    Key Leadership
+                  </div>
+                </div>
+                
+                {/* Details */}
+                <div className="p-6 md:p-10 flex flex-col justify-between flex-grow bg-white">
+                  <div>
+                    <span className="text-[10px] md:text-xs font-bold text-primary uppercase tracking-widest bg-primary/5 border border-primary/20 px-3 py-1 rounded-full inline-block mb-4">
+                      Executive Director
+                    </span>
+                    <h3 className="text-gray-900 font-black text-2xl md:text-3xl lg:text-4xl tracking-tight leading-tight mb-1">{member.name}</h3>
+                    <p className="text-sm md:text-base lg:text-lg text-primary font-bold tracking-wide mb-6">{member.role}</p>
+                    <p className="text-xs md:text-sm lg:text-base text-gray-650 leading-relaxed font-medium">{member.bio}</p>
+                  </div>
+                  
+                  {/* Footer tag */}
+                  <div className="mt-8 pt-5 border-t border-gray-100 flex justify-end items-center">
+                    <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-primary font-mono">CEO</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Core Team Grid (Symmetric 3x2) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {team.filter((m) => !m.highlight).map((member, idx) => (
               <div
                 key={idx}
                 data-reveal="fade-up"
@@ -349,30 +417,22 @@ export default function About() {
                     alt={member.name}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500 object-top"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-transparent opacity-60"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-950/90 via-gray-950/20 to-transparent opacity-85"></div>
                   
                   {/* Absolute Badge */}
                   <div className="absolute bottom-4 left-4 right-4 text-white">
                     <h4 className="font-bold text-base leading-tight drop-shadow-sm">{member.name}</h4>
-                    <span className="text-xs text-orange-300 font-semibold tracking-wide">{member.role}</span>
+                    <span className="text-xs text-orange-300 font-semibold tracking-wide">
+                      {member.role}
+                    </span>
                   </div>
                 </div>
                 
                 {/* Details */}
-                <div className="p-5 flex flex-col flex-grow">
-                  <p className="text-xs text-gray-600 leading-relaxed flex-grow">{member.bio}</p>
-                  
-                  {/* Social indicators */}
-                  <div className="mt-4 pt-4 border-t border-gray-100 flex gap-3 text-gray-400">
-                    <span className="material-symbols-outlined text-[18px] cursor-pointer hover:text-primary transition-colors">
-                      alternate_email
-                    </span>
-                    <span className="material-symbols-outlined text-[18px] cursor-pointer hover:text-primary transition-colors">
-                      share
-                    </span>
-                  </div>
+                <div className="p-5 flex flex-col flex-grow bg-white">
+                  <p className="text-xs text-gray-600 leading-relaxed flex-grow font-medium">{member.bio}</p>
                 </div>
               </div>
             ))}
@@ -395,7 +455,7 @@ export default function About() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             
             {/* Gallery Card 1: Software Lab */}
-            <div data-reveal="zoom-up" className="relative h-64 rounded-2xl bg-zinc-950 border border-zinc-800 p-6 flex flex-col justify-between overflow-hidden group select-none">
+            <Link href="/gallery?category=Development Labs" data-reveal="zoom-up" className="relative h-64 rounded-2xl bg-zinc-950 border border-zinc-800 p-6 flex flex-col justify-between overflow-hidden group select-none cursor-pointer">
               {/* background grid */}
               <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f1f23_1px,transparent_1px),linear-gradient(to_bottom,#1f1f23_1px,transparent_1px)] bg-[size:1.5rem_1.5rem] opacity-20 pointer-events-none"></div>
               {/* floating glow */}
@@ -417,10 +477,10 @@ export default function About() {
                   arrow_forward
                 </span>
               </div>
-            </div>
+            </Link>
 
             {/* Gallery Card 2: IoT & Prototyping */}
-            <div data-reveal="zoom-up" data-reveal-delay="100" className="relative h-64 rounded-2xl bg-zinc-950 border border-zinc-800 p-6 flex flex-col justify-between overflow-hidden group select-none">
+            <Link href="/gallery?category=IoT %26 Hardware Desk" data-reveal="zoom-up" data-reveal-delay="100" className="relative h-64 rounded-2xl bg-zinc-950 border border-zinc-800 p-6 flex flex-col justify-between overflow-hidden group select-none cursor-pointer">
               {/* background grid */}
               <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f1f23_1px,transparent_1px),linear-gradient(to_bottom,#1f1f23_1px,transparent_1px)] bg-[size:1.5rem_1.5rem] opacity-20 pointer-events-none"></div>
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-accent-yellow/10 rounded-full blur-[60px] pointer-events-none group-hover:bg-accent-yellow/20 transition-colors duration-300"></div>
@@ -439,10 +499,10 @@ export default function About() {
                   arrow_forward
                 </span>
               </div>
-            </div>
+            </Link>
 
             {/* Gallery Card 3: Hackathon Center */}
-            <div data-reveal="zoom-up" data-reveal-delay="200" className="relative h-64 rounded-2xl bg-zinc-950 border border-zinc-800 p-6 flex flex-col justify-between overflow-hidden group select-none">
+            <Link href="/gallery?category=Collaboration Zone" data-reveal="zoom-up" data-reveal-delay="200" className="relative h-64 rounded-2xl bg-zinc-950 border border-zinc-800 p-6 flex flex-col justify-between overflow-hidden group select-none cursor-pointer">
               {/* background grid */}
               <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f1f23_1px,transparent_1px),linear-gradient(to_bottom,#1f1f23_1px,transparent_1px)] bg-[size:1.5rem_1.5rem] opacity-20 pointer-events-none"></div>
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-emerald-500/10 rounded-full blur-[60px] pointer-events-none group-hover:bg-emerald-500/20 transition-colors duration-300"></div>
@@ -461,10 +521,10 @@ export default function About() {
                   arrow_forward
                 </span>
               </div>
-            </div>
+            </Link>
 
             {/* Gallery Card 4: Learning Seminars */}
-            <div data-reveal="zoom-up" data-reveal-delay="300" className="relative h-64 rounded-2xl bg-zinc-950 border border-zinc-800 p-6 flex flex-col justify-between overflow-hidden group select-none">
+            <Link href="/gallery?category=Classrooms %26 Seminars" data-reveal="zoom-up" data-reveal-delay="300" className="relative h-64 rounded-2xl bg-zinc-950 border border-zinc-800 p-6 flex flex-col justify-between overflow-hidden group select-none cursor-pointer">
               {/* background grid */}
               <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f1f23_1px,transparent_1px),linear-gradient(to_bottom,#1f1f23_1px,transparent_1px)] bg-[size:1.5rem_1.5rem] opacity-20 pointer-events-none"></div>
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-purple-500/10 rounded-full blur-[60px] pointer-events-none group-hover:bg-purple-500/20 transition-colors duration-300"></div>
@@ -483,7 +543,7 @@ export default function About() {
                   arrow_forward
                 </span>
               </div>
-            </div>
+            </Link>
 
           </div>
         </div>
