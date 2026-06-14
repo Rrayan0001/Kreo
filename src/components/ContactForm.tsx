@@ -64,11 +64,19 @@ export default function ContactForm() {
                 <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 text-primary flex items-center justify-center shrink-0">
                   <span className="material-symbols-outlined text-[20px]">location_on</span>
                 </div>
-                <div>
-                  <h4 className="font-bold text-gray-900 text-sm">Our Head Office</h4>
-                  <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">
-                    Shop No. 27, 1st Floor, R N Shetty Stadium Complex, KCD College Road, Dharwad - 580001
-                  </p>
+                <div className="space-y-3">
+                  <div>
+                    <h4 className="font-bold text-gray-900 text-sm">Branch Office</h4>
+                    <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">
+                      Shop No. 27, 1st Floor, R N Shetty Stadium Complex, KCD College Road, Dharwad - 580001
+                    </p>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900 text-sm">Headquarters</h4>
+                    <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">
+                      Jakati Chawl, Dixit Wada Road Line Bazar, Dharwad - 580001
+                    </p>
+                  </div>
                 </div>
               </div>
 

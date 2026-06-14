@@ -51,7 +51,7 @@ export default function Footer() {
                     <br />KCD College Road, Dharwad – 580001
                   </p>
 
-                  <h4 className="font-bold text-white mb-0.5">Headquaters</h4>
+                  <h4 className="font-bold text-white mb-0.5">Headquarters</h4>
                   <p className="text-sm text-gray-400 leading-relaxed">
                     Jakati Chawl, Dixit Wada Road Line Bazar, Dharwad, 580001
                   </p>
