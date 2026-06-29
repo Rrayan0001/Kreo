@@ -108,15 +108,6 @@ export default function About() {
     { number: "100%", label: "Client Satisfaction", desc: "Delivered with precision, high-speed execution, and full support." },
   ];
 
-  const clients = [
-    { name: "Chandan", url: "https://schoolchandan.edu.in" },
-    { name: "Arcon", url: "https://arconespl.com" },
-    { name: "SKPSH", url: "https://skpsh.in" },
-    { name: "IgnitePrime", url: "https://ignitesportsfitness.in" },
-    { name: "PlanNetM", url: null },
-    { name: "KLE", url: null },
-  ];
-
   return (
     <section id="about" className="pt-10 pb-16 md:pt-12 md:pb-20 bg-[#faf9f6] border-t border-gray-100 relative overflow-clip">
       {/* Decorative backdrop blobs */}
@@ -304,42 +295,6 @@ export default function About() {
               <p className="text-xs text-gray-500 leading-relaxed">{ach.desc}</p>
             </div>
           ))}
-        </div>
-
-        {/* ========================================== */}
-        {/* HAPPY CLIENTS                              */}
-        {/* ========================================== */}
-        <div data-reveal="fade-up" className="mb-24">
-          <div className="text-center mb-8">
-            <span className="text-[10px] font-bold text-primary uppercase tracking-widest block mb-1">Our Network</span>
-            <h3 className="text-xl font-bold text-gray-900">Happy Clients & Educational Partners</h3>
-          </div>
-          
-          {/* Client Logo Track */}
-          <div className="relative overflow-clip w-full py-4 border-y border-dashed border-gray-200">
-            <div className="flex justify-around items-center flex-wrap gap-8 md:gap-12">
-              {clients.map((client, idx) =>
-                client.url ? (
-                  <a
-                    key={idx}
-                    href={client.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-6 py-3 bg-white border border-gray-200 shadow-sm rounded-xl text-gray-800 font-black text-sm md:text-base tracking-widest select-none cursor-pointer hover:border-primary/40 hover:text-primary transition-all duration-300 hover:shadow-md hover:scale-105"
-                  >
-                    {client.name.toUpperCase()}
-                  </a>
-                ) : (
-                  <div
-                    key={idx}
-                    className="px-6 py-3 bg-white border border-gray-200 shadow-sm rounded-xl text-gray-800 font-black text-sm md:text-base tracking-widest select-none cursor-default transition-all duration-300 hover:border-primary/40 hover:text-primary hover:shadow-md hover:scale-105"
-                  >
-                    {client.name.toUpperCase()}
-                  </div>
-                )
-              )}
-            </div>
-          </div>
         </div>
 
         {/* ========================================== */}

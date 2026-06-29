@@ -52,8 +52,13 @@ export default function Footer() {
                   </p>
 
                   <h4 className="font-bold text-white mb-0.5">Headquarters</h4>
-                  <p className="text-sm text-gray-400 leading-relaxed">
+                  <p className="text-sm text-gray-400 leading-relaxed mb-4">
                     Jakati Chawl, Dixit Wada Road Line Bazar, Dharwad, 580001
+                  </p>
+
+                  <h4 className="font-bold text-primary mb-0.5">Serving Across Multiple Districts</h4>
+                  <p className="text-sm text-gray-200 leading-relaxed font-semibold">
+                    Sankeshwar, Bagalkot, Kolhapur, and Davangere
                   </p>
                 </div>
               </div>
