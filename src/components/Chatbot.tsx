@@ -86,7 +86,7 @@ export default function Chatbot() {
       );
     } else if (option === "Office Location") {
       addBotResponse(
-        "We are located at:\n📍 R N Shetty Stadium Complex, 1st Floor, Dharwad - 580001 (Karnataka, India).\nFeel free to drop by for a consult!",
+        "We are located at:\n📍 Marathi Mandal Premises, 2nd Floor, Beside District Court, PB Road, Dharwad - 580001 (Karnataka, India).\nFeel free to drop by for a consult!",
         ["Main Menu"]
       );
     } else if (option === "Main Menu") {

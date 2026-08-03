@@ -51,7 +51,7 @@ export default function ContactForm() {
             <div>
               <div className="section-divider"></div>
               <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-4 tracking-tight leading-tight">
-                Let's Build Something Great Together
+                Let&apos;s Build Something Great Together
               </h2>
               <p className="text-base text-gray-600 leading-relaxed max-w-md">
                 Select an available date and time on the calendar to schedule a live discovery session with one of our lead software engineers.
@@ -68,7 +68,7 @@ export default function ContactForm() {
                   <div>
                     <h4 className="font-bold text-gray-900 text-sm">Branch Office</h4>
                     <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">
-                      Shop No. 27, 1st Floor, R N Shetty Stadium Complex, KCD College Road, Dharwad - 580001
+                      Marathi Mandal Premises, 2nd Floor, Beside District Court, PB Road, Dharwad - 580001
                     </p>
                   </div>
                   <div>

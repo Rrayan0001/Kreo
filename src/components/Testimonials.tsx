@@ -140,7 +140,7 @@ export default function Testimonials() {
                 </div>
 
                 <p className="text-zinc-300 text-sm leading-relaxed mb-6 font-medium italic">
-                  "{item.quote}"
+                  &quot;{item.quote}&quot;
                 </p>
               </div>
 

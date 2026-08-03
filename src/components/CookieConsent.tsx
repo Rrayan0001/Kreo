@@ -13,7 +13,6 @@ export default function CookieConsent() {
     // Check if user has already made a choice
     const savedChoice = localStorage.getItem("kreo_cookie_consent");
     if (savedChoice === "accepted" || savedChoice === "declined") {
-      setIsVisible(false);
       return;
     }
 

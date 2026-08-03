@@ -56,7 +56,7 @@ We offer competitive, student-friendly, and institutional packages. For exact pr
 
 ## Contact Information & Address
 - Website: www.kreosoftwares.in
-- Location Address: R N Shetty Stadium Complex, 1st Floor, KCD College Road, Near Jubilee Circle, Dharwad - 580001 (Karnataka, India)
+- Location Address: Marathi Mandal Premises, 2nd Floor, Beside District Court, PB Road, Dharwad - 580001 (Karnataka, India)
 - Phone Numbers: +91 8123685041, +91 9980411129
 - Email Address: kreo.pvt.ltd@gmail.com
 `;
@@ -126,8 +126,9 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ reply: replyText });
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Chatbot API error:", error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    const errorMessage = error instanceof Error ? error.message : "Unknown error";
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }

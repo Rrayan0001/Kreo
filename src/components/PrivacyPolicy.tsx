@@ -36,7 +36,7 @@ export default function PrivacyPolicy({ onClose }: PrivacyPolicyProps) {
           <section>
             <h2 className="text-lg font-bold text-gray-900 mb-3">Introduction</h2>
             <p className="text-sm leading-relaxed">
-              Kreo ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services.
+              Kreo (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services.
             </p>
           </section>
 

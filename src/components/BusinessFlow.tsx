@@ -12,55 +12,57 @@ interface FlowStep {
   description: string;
 }
 
+const STEPS: FlowStep[] = [
+  {
+    step: "01",
+    icon: "public",
+    status: "SYSTEM ACTIVE",
+    statusColor: "text-emerald-500 bg-emerald-50 border-emerald-200",
+    title: "Core Web Engine",
+    tagline: "High-Performance Conversions",
+    description: "Blazing-fast loading pages tailored for high conversion rates. Fully optimized for search engine rankings, accessibility, and fluid user interactions.",
+  },
+  {
+    step: "02",
+    icon: "hub",
+    status: "SYNC PIPELINE RUNNING",
+    statusColor: "text-blue-500 bg-blue-50 border-blue-200",
+    title: "Real-time CRM Sync",
+    tagline: "Instant Lead Routing",
+    description: "Leads captured are routed within milliseconds directly to your database or sales pipelines, triggering instant validation and notification workflows.",
+  },
+  {
+    step: "03",
+    icon: "settings_suggest",
+    status: "DAEMON IDLE - LISTENING",
+    statusColor: "text-orange-500 bg-orange-50 border-orange-200",
+    title: "Automated Triggers",
+    tagline: "24/7 Action & Nurturing",
+    description: "Event-driven sequences that send personalized emails, schedule calendar hooks, and nurture prospects automatically without manual intervention.",
+  },
+  {
+    step: "04",
+    icon: "monitoring",
+    status: "COMPUTING REALTIME",
+    statusColor: "text-purple-500 bg-purple-50 border-purple-200",
+    title: "Predictive Analytics",
+    tagline: "Live Insights Dashboard",
+    description: "Consolidated user behaviors, page performance tracking, and conversion drop-offs visualized live to back up product choices with concrete data.",
+  },
+];
+
 export default function BusinessFlow() {
   const [activeStep, setActiveStep] = useState<number>(0);
 
-  // Auto-rotate steps every 4 seconds unless hovered/selected by user
+  // Auto-rotate steps every 4.5 seconds unless hovered/selected by user
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveStep((prev) => (prev + 1) % steps.length);
+      setActiveStep((prev) => (prev + 1) % STEPS.length);
     }, 4500);
     return () => clearInterval(interval);
   }, []);
 
-  const steps: FlowStep[] = [
-    {
-      step: "01",
-      icon: "public",
-      status: "SYSTEM ACTIVE",
-      statusColor: "text-emerald-500 bg-emerald-50 border-emerald-200",
-      title: "Core Web Engine",
-      tagline: "High-Performance Conversions",
-      description: "Blazing-fast loading pages tailored for high conversion rates. Fully optimized for search engine rankings, accessibility, and fluid user interactions.",
-    },
-    {
-      step: "02",
-      icon: "hub",
-      status: "SYNC PIPELINE RUNNING",
-      statusColor: "text-blue-500 bg-blue-50 border-blue-200",
-      title: "Real-time CRM Sync",
-      tagline: "Instant Lead Routing",
-      description: "Leads captured are routed within milliseconds directly to your database or sales pipelines, triggering instant validation and notification workflows.",
-    },
-    {
-      step: "03",
-      icon: "settings_suggest",
-      status: "DAEMON IDLE - LISTENING",
-      statusColor: "text-orange-500 bg-orange-50 border-orange-200",
-      title: "Automated Triggers",
-      tagline: "24/7 Action & Nurturing",
-      description: "Event-driven sequences that send personalized emails, schedule calendar hooks, and nurture prospects automatically without manual intervention.",
-    },
-    {
-      step: "04",
-      icon: "monitoring",
-      status: "COMPUTING REALTIME",
-      statusColor: "text-purple-500 bg-purple-50 border-purple-200",
-      title: "Predictive Analytics",
-      tagline: "Live Insights Dashboard",
-      description: "Consolidated user behaviors, page performance tracking, and conversion drop-offs visualized live to back up product choices with concrete data.",
-    },
-  ];
+  const steps = STEPS;
 
   // Render the dynamic simulator screen based on active step
   const renderSimulator = () => {
@@ -108,13 +110,13 @@ export default function BusinessFlow() {
             <div className="flex-1 flex flex-col justify-center items-center py-4">
               <div className="w-full space-y-2 sm:space-y-3 font-mono text-[10px] sm:text-[11px] text-gray-600 bg-gray-50 rounded-xl p-2.5 sm:p-4 border border-gray-100 shadow-inner overflow-x-auto">
                 <p className="text-blue-500">{"{"}</p>
-                <p className="pl-4"><span className="text-purple-500">"event"</span>: "lead_captured",</p>
-                <p className="pl-4"><span className="text-purple-500">"source"</span>: "Kreo OS Engine",</p>
-                <p className="pl-4"><span className="text-purple-500">"data"</span>: {"{"}</p>
-                <p className="pl-8"><span className="text-purple-500">"name"</span>: "Rrayan",</p>
-                <p className="pl-8"><span className="text-purple-500">"status"</span>: <span className="text-emerald-600">"auto_qualified"</span></p>
+                <p className="pl-4"><span className="text-purple-500">&quot;event&quot;</span>: &quot;lead_captured&quot;,</p>
+                <p className="pl-4"><span className="text-purple-500">&quot;source&quot;</span>: &quot;Kreo OS Engine&quot;,</p>
+                <p className="pl-4"><span className="text-purple-500">&quot;data&quot;</span>: {"{"}</p>
+                <p className="pl-8"><span className="text-purple-500">&quot;name&quot;</span>: &quot;Rrayan&quot;,</p>
+                <p className="pl-8"><span className="text-purple-500">&quot;status&quot;</span>: <span className="text-emerald-600">&quot;auto_qualified&quot;</span></p>
                 <p className="pl-4">{"}"},</p>
-                <p className="pl-4 text-gray-400">// synced to CRM pipeline (0.12s)</p>
+                <p className="pl-4 text-gray-400">{"// synced to CRM pipeline (0.12s)"}</p>
                 <p className="text-blue-500">{"}"}</p>
               </div>
             </div>

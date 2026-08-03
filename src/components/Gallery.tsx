@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState, Suspense } from "react";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 
@@ -35,21 +35,16 @@ export default function Gallery() {
 
 function GalleryContent() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [activeCategory, setActiveCategory] = useState("All");
   const searchParams = useSearchParams();
   const categoryParam = searchParams.get("category");
 
-  useEffect(() => {
-    if (categoryParam) {
-      const decodedParam = decodeURIComponent(categoryParam);
-      const matchedCat = categories.find(
-        (c) => c.name.toLowerCase() === decodedParam.toLowerCase()
-      );
-      if (matchedCat) {
-        setActiveCategory(matchedCat.name);
-      }
-    }
-  }, [categoryParam]);
+  const initialCategory = categoryParam
+    ? (categories.find(
+        (c) => c.name.toLowerCase() === decodeURIComponent(categoryParam).toLowerCase()
+      )?.name ?? "All")
+    : "All";
+
+  const [activeCategory, setActiveCategory] = useState(initialCategory);
 
   const filteredImages = images.filter(
     (img) => activeCategory === "All" || img.category === activeCategory

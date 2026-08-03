@@ -47,8 +47,8 @@ export default function Footer() {
                 <div>
                   <h4 className="font-bold text-white mb-0.5">Branch Office</h4>
                   <p className="text-sm text-gray-400 leading-relaxed mb-4">
-                    R N Shetty Stadium Complex, 1st Floor, Shop No. 27,
-                    <br />KCD College Road, Dharwad – 580001
+                    Marathi Mandal Premises, 2nd Floor,
+                    <br />Beside District Court, PB Road, Dharwad – 580001
                   </p>
 
                   <h4 className="font-bold text-white mb-0.5">Headquarters</h4>
